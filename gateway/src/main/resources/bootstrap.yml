@@ -1,0 +1,10 @@
+# 应用名称
+spring:
+  application:
+    name: oa-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 60.205.230.70:8848
+server:
+  port: 8888
