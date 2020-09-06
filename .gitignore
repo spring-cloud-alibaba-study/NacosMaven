@@ -1,0 +1,23 @@
+# Created by .ignore support plugin (hsz.mobi)
+Thumbs.db
+.DS_Store
+bin/
+build/
+.settings
+.gradle
+.classpath
+.project
+.git/
+catalina*
+logs/
+classes/
+test-classes/
+.idea
+*.iml
+*.ipr
+*.iws
+*.log
+*.cache
+out/
+target
+.factorypath
