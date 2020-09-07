@@ -1,0 +1,25 @@
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 60.205.230.70:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true # 请求服务是小写的时候改成true（默认为false轻微服务必须是大写）
+
+#      routes:
+#        - id: oa-operation
+#          uri: lb://oa-operation # 服务端 service_id
+#          # 网关断言匹配
+#          predicates:
+#            - Path=/operation/**    # 路由映射路径 这里注意，这个路径会追加到 service_id后
+#          filters:
+#            - StripPrefix=1  # 转发过滤前缀个数
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

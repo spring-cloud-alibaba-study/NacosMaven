@@ -1,0 +1,27 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 60.205.230.70:8848
+
+server:
+  tomcat:
+    # 该线程池可以容纳的最大线程数。默认值：200；
+    maxThreads: 300
+    # 最大连接线程数，即：并发处理的最大请求数，默认值为 75
+    maxConnections: 3000
+    # 允许的最大连接数，应大于等于 maxProcessors ，默认值为 100
+    acceptCount: 1000
+    # 编码方式
+    uri-encoding: UTF-8
+application:
+  base-package: com.js
+
+logging:
+  config: classpath:logback-spring.xml
+
+#基本信息
+info:
+  description: 黑大OA签到平台
+  version: v1.0
+  author: 技术部

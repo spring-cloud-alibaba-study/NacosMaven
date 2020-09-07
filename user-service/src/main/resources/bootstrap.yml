@@ -1,0 +1,6 @@
+# 应用名称
+spring:
+  application:
+    name: user-service
+server:
+  port: 8081 #服务端口
