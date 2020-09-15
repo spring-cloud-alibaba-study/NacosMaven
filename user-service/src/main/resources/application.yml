@@ -3,7 +3,6 @@ spring:
     nacos:
       discovery:
         server-addr: 60.205.230.70:8848
-
 server:
   tomcat:
     # 该线程池可以容纳的最大线程数。默认值：200；
@@ -25,3 +24,11 @@ info:
   description: 黑大OA签到平台
   version: v1.0
   author: 技术部
+dubbo:
+  scan:
+    base-packages: ${application.base-package}.dubbo
+  protocol:
+    port: 8848
+    name: dubbo
+  registry:
+    address: nacos://60.205.230.70
