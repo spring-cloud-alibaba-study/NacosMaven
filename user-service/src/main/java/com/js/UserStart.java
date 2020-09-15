@@ -16,7 +16,7 @@ import org.springframework.context.annotation.ImportResource;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
-@ImportResource(value = {"classpath:dubbo/spring-dubbo.xml"})
+//@ImportResource(value = {"classpath:dubbo/spring-dubbo.xml"})
 @Slf4j
 public class UserStart {
     public static void main(String[] args) {
