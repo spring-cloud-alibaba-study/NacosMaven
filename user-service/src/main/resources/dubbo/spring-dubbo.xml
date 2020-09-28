@@ -15,7 +15,7 @@
 
   <!-- 提供方应用信息，用于计算依赖关系 -->
     <dubbo:application name="${spring.application.name}" />
-    <dubbo:registry protocol="${dubbo.protocol}" address="${dubbo.registry.address}" />
+    <dubbo:registry address="${dubbo.registry.address}" />
     <dubbo:protocol name="${dubbo.protocol.name}" port="${dubbo.protocol.port}" />
     <dubbo:monitor protocol="registry" />
     <import resource="spring-dubbo-provider.xml" />

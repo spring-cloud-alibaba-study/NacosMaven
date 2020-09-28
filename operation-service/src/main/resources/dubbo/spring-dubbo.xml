@@ -7,17 +7,17 @@
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/util
         http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
-    <!-- 使用multicast广播注册中心暴露服务地址 -->
-    <dubbo:registry address="nacos://60.205.230.70:8848" />
+    <!--&lt;!&ndash; 使用multicast广播注册中心暴露服务地址 &ndash;&gt;-->
+    <!--<dubbo:registry address="nacos://60.205.230.70:8848" />-->
 
-    <!-- 用dubbo协议在20880端口暴露服务 -->
-    <dubbo:protocol name="dubbo" port="20880" />
+    <!--&lt;!&ndash; 用dubbo协议在20880端口暴露服务 &ndash;&gt;-->
+    <!--<dubbo:protocol name="dubbo" port="20880" />-->
 
-  <!-- 提供方应用信息，用于计算依赖关系 -->
-    <dubbo:application name="${spring.application.name}" />
-    <dubbo:registry protocol="${dubbo.protocol}" address="${dubbo.registry.address}" />
-    <dubbo:protocol name="${dubbo.protocol.name}" port="${dubbo.protocol.port}" />
-    <dubbo:monitor protocol="registry" />
-    <import resource="spring-dubbo-provider.xml" />
-    <import resource="spring-dubbo-consumer.xml" />
+  <!--&lt;!&ndash; 提供方应用信息，用于计算依赖关系 &ndash;&gt;-->
+    <!--<dubbo:application name="${spring.application.name}" />-->
+    <!--<dubbo:registry protocol="${dubbo.protocol}" address="${dubbo.registry.address}" />-->
+    <!--<dubbo:protocol name="${dubbo.protocol.name}" port="${dubbo.protocol.port}" />-->
+    <!--<dubbo:monitor protocol="registry" />-->
+    <!--<import resource="spring-dubbo-provider.xml" />-->
+    <!--<import resource="spring-dubbo-consumer.xml" />-->
 </beans>
