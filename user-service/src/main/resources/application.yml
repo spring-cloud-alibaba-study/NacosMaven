@@ -31,4 +31,6 @@ dubbo:
     port: 20880
     name: dubbo
   registry:
-    address: nacos://60.205.230.70
+    address: nacos://60.205.230.70:8848
+  application:
+    name: user-service
