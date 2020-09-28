@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://code.alibabatech.com/schema/dubbo
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://code.alibabatech.com/schema/dubbo
 		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-	<dubbo:reference id="testMyDubboService" interface="com.js.dubbo.TestDubboService"  check="false" timeout="60000" retries="0"/>
+	<dubbo:reference id="testDubboService" interface="com.js.dubbo.TestDubboService"  check="false" timeout="60000" retries="0"/>
 
     <!-- 会员信息接口 -->
     <!--<dubbo:reference id="memberBaseInfoDubbo" interface="com.suixingpay.mpos.member.dubbo.api.MemberBaseInfo.MemberBaseInfoDubbo"  check="false"  timeout="20000" retries="0"/>-->

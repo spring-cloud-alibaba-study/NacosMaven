@@ -17,12 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @Autowired
-    private TestDubboService testMyDubboService;
+    private TestDubboService testDubboService;
 
     @GetMapping("/test")
     public String getString (){
         log.info("进入消费者");
-        testMyDubboService.sayHello("jiangshuang");
-        return "test";
+        return testDubboService.sayHello("jiangshuang");
     }
 }

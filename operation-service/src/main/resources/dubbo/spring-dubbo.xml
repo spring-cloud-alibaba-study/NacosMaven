@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
-        http://code.alibabatech.com/schema/dubbo  
-        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-4.3.xsd" >
 
-    <!-- 用dubbo协议在20880端口暴露服务 -->
-    <dubbo:protocol name="dubbo" port="20880" />
+<!--    <dubbo:registry protocol="nacos" address="nacos://60.205.230.70:8848" timeout="50000"/>-->
+<!--    <dubbo:monitor protocol="registry" />-->
 
-  <!-- 提供方应用信息，用于计算依赖关系 -->
-    <dubbo:application name="${spring.application.name}" />
-    <dubbo:registry protocol="nacos" address="${dubbo.registry.address}" timeout="10000"/>
-    <!--<dubbo:monitor protocol="registry" />-->
-
-    <import resource="classpath*:dubbo/spring-dubbo-provider.xml" />
-    <import resource="classpath*:dubbo/spring-dubbo-consumer.xml" />
+    <import resource="classpath:dubbo/spring-dubbo-provider.xml" />
+    <import resource="classpath:dubbo/spring-dubbo-consumer.xml" />
 </beans>
