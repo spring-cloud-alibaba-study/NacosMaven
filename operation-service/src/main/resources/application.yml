@@ -1,9 +1,3 @@
-spring:
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 60.205.230.70:8848
-
 server:
   tomcat:
     # 该线程池可以容纳的最大线程数。默认值：200；

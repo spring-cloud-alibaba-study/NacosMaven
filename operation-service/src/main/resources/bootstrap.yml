@@ -2,5 +2,9 @@
 spring:
   application:
     name: operation-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 60.205.230.70:8848
 server:
   port: 8088 #服务端口
