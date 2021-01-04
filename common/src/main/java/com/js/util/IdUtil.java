@@ -9,9 +9,6 @@ import java.util.UUID;
  */
 public class IdUtil {
 
-    @Autowired
-    private static SnowFlakeUtil snowFlakeUtil;
-
     private IdUtil() {
         throw new IllegalStateException("IdUtils工具异常");
     }
@@ -22,7 +19,7 @@ public class IdUtil {
 
     public static synchronized String getUuid() {
 
-        return String.valueOf(snowFlakeUtil.getInstance().nextId()).replace("-", "");
+        return String.valueOf(SnowFlakeUtil.getInstance().nextId()).replace("-", "");
     }
 
     public static void main(String[] args) {

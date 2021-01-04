@@ -1,10 +1,11 @@
 package com.js.util;
 
+import com.js.util.NetUtils;
+import com.js.util.SnowFlake;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Slf4j
-@Component
 public class SnowFlakeUtil {
     private static volatile SnowFlake instance;
 
@@ -18,7 +19,7 @@ public class SnowFlakeUtil {
      **/
     private static volatile long machineId;
 
-    public SnowFlake getInstance() {
+    public static SnowFlake getInstance() {
         if (instance == null) {
             synchronized (SnowFlake.class) {
                 if (instance == null) {
@@ -31,7 +32,7 @@ public class SnowFlakeUtil {
         return instance;
     }
 
-    private void initManyId() {
+    private static void initManyId() {
         datacenterId = Long.valueOf(NetUtils.getThreeIp(NetUtils.getLocalIp()));
         machineId = Long.valueOf(NetUtils.getLastIp(NetUtils.getLocalIp()));
     }
