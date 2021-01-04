@@ -20,11 +20,11 @@ import org.springframework.context.annotation.ImportResource;
 @Slf4j
 public class UserStart {
     public static void main(String[] args) {
-        try{
-            SpringApplication.run(UserStart.class,args);
+        try {
+            SpringApplication.run(UserStart.class, args);
             log.info(StartLogo.print());
             log.info("项目启动成功");
-        }catch (Exception e){
+        } catch (Exception e) {
             log.info("项目启动失败");
         }
 
