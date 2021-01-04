@@ -20,7 +20,7 @@ public class TestController {
     private TestDubboService testDubboService;
 
     @GetMapping("/test")
-    public String getString (){
+    public String getString() {
         log.info("进入消费者");
         return testDubboService.sayHello("jiangshuang");
     }

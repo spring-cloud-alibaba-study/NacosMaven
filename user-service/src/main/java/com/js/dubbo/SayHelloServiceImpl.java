@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
  * http://www.gupaoedu.com
  **/
 @Service
-public class SayHelloServiceImpl implements TestDubboService{
+public class SayHelloServiceImpl implements TestDubboService {
 
     @Override
     public String sayHello(String msg) {
