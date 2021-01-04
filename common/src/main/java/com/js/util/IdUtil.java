@@ -1,7 +1,5 @@
 package com.js.util;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.UUID;
 
 /**

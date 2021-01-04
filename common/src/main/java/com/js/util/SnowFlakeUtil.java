@@ -1,9 +1,6 @@
 package com.js.util;
 
-import com.js.util.NetUtils;
-import com.js.util.SnowFlake;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 @Slf4j
 public class SnowFlakeUtil {
