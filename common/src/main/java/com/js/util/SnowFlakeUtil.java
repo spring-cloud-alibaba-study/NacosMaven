@@ -1,8 +1,6 @@
 package com.js.util;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
+//@Slf4j
 public class SnowFlakeUtil {
     private static volatile SnowFlake instance;
 
@@ -21,7 +19,7 @@ public class SnowFlakeUtil {
             synchronized (SnowFlake.class) {
                 if (instance == null) {
                     initManyId();
-                    log.info("获取雪花算法工具包为空，开始初始化雪花算法工具包数据中心id={},机器id={}", datacenterId, machineId);
+//                    log.info("获取雪花算法工具包为空，开始初始化雪花算法工具包数据中心id={},机器id={}", datacenterId, machineId);
                     instance = new SnowFlake(machineId, datacenterId);
                 }
             }
