@@ -1,7 +1,10 @@
 package com.js.util;
 
-//@Slf4j
+import java.util.logging.Logger;
+
 public class SnowFlakeUtil {
+    private static Logger logger = Logger.getLogger("SnowFlakeUtil");
+
     private static volatile SnowFlake instance;
 
     /**
@@ -19,7 +22,7 @@ public class SnowFlakeUtil {
             synchronized (SnowFlake.class) {
                 if (instance == null) {
                     initManyId();
-//                    log.info("获取雪花算法工具包为空，开始初始化雪花算法工具包数据中心id={},机器id={}", datacenterId, machineId);
+                    logger.info("获取雪花算法工具包为空，开始初始化雪花算法工具包数据中心id="+ datacenterId + ",机器id=" +machineId);
                     instance = new SnowFlake(machineId, datacenterId);
                 }
             }
