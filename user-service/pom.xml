@@ -6,7 +6,7 @@
     <artifactId>user-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>user-service</name>
-    <description>Demo project for Spring Boot</description>
+    <description>User项目</description>
 
     <parent>
         <groupId>com.js</groupId>
@@ -37,7 +37,6 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <version>2.2.2.RELEASE</version>
         </dependency>
 
         <dependency>
@@ -58,7 +57,6 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-dubbo</artifactId>
-            <version>2.2.2.RELEASE</version>
         </dependency>
 
         <dependency>
