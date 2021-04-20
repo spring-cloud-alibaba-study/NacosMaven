@@ -3,6 +3,10 @@ spring:
     nacos:
       discovery:
         server-addr: 60.205.230.70:8848
+  redis:
+    host: 60.205.230.70
+    port: 6379
+    password: root
 server:
   tomcat:
     # 该线程池可以容纳的最大线程数。默认值：200；
