@@ -17,6 +17,7 @@
         <module>operation-service</module>
         <module>user-service</module>
         <module>user-api</module>
+        <module>scheduled-service</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

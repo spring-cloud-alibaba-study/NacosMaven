@@ -1,0 +1,19 @@
+# 应用名称
+spring:
+  application:
+    name: scheduled-service
+  datasource:
+    url: jdbc:mysql://60.205.230.70:3306/hd_oa?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    password: root
+    username: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  typeAliasesPackage: ${application.base-package}.pojo, ${application.base-package}.vo, ${application.base-package}.dto
+  mapper-locations: classpath:mapper/*/*.xml,classpath:mapper/*.xml
+  configuration:
+    # 一定要设置，避免个别SQL执行时间过长，把系统搞跨
+    default-statement-timeout: 5
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    cache-enabled: false

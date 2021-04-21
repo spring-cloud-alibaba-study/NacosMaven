@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.js.mapper.SysQuartzMapper">
+    <!-- 结果集 -->
+    <resultMap type="com.js.entity.SysQuartz" id="SysQuartzMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="className" column="class_name" jdbcType="VARCHAR"/>
+        <result property="cronExpression" column="cron_expression" jdbcType="VARCHAR"/>
+        <result property="param" column="param" jdbcType="VARCHAR"/>
+        <result property="descript" column="descript" jdbcType="VARCHAR"/>
+        <result property="quartzStatus" column="quartz_status" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="createUser" column="create_user" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="delFlag" column="del_flag" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!-- 基本字段 -->
+    <sql id="Base_Column_List">
+        id, class_name, cron_expression, param, descript, quartz_status, create_time, create_user, status, del_flag
+    </sql>
+
+    <!-- 通过ID查询单条数据 -->
+    <select id="selectById" resultMap="SysQuartzMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_quartz
+        where id = #{id}
+    </select>
+
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="selectList" resultMap="SysQuartzMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_quartz
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="className != null and className != ''">
+                and class_name = #{className}
+            </if>
+            <if test="cronExpression != null and cronExpression != ''">
+                and cron_expression = #{cronExpression}
+            </if>
+            <if test="param != null and param != ''">
+                and param = #{param}
+            </if>
+            <if test="descript != null and descript != ''">
+                and descript = #{descript}
+            </if>
+            <if test="quartzStatus != null and quartzStatus != ''">
+                and quartz_status = #{quartzStatus}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="createUser != null">
+                and create_user = #{createUser}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="delFlag != null">
+                and del_flag = #{delFlag}
+            </if>
+        </where>
+    </select>
+
+    <!-- 新增数据 -->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="com.js.entity.SysQuartz">
+        insert into sys_quartz
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="className != null">
+                class_name,
+            </if>
+            <if test="cronExpression != null">
+                cron_expression,
+            </if>
+            <if test="param != null">
+                param,
+            </if>
+            <if test="descript != null">
+                descript,
+            </if>
+            <if test="quartzStatus != null">
+                quartz_status,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="createUser != null">
+                create_user,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="delFlag != null">
+                del_flag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="className != null">
+                #{className,jdbcType=VARCHAR},
+            </if>
+            <if test="cronExpression != null">
+                #{cronExpression,jdbcType=VARCHAR},
+            </if>
+            <if test="param != null">
+                #{param,jdbcType=VARCHAR},
+            </if>
+            <if test="descript != null">
+                #{descript,jdbcType=VARCHAR},
+            </if>
+            <if test="quartzStatus != null">
+                #{quartzStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createUser != null">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="delFlag != null">
+                #{delFlag,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 批量新增 -->
+    <insert id="batchInsert">
+        insert into sys_quartz(id, class_name, cron_expression, param, descript, quartz_status, create_time,
+        create_user, status, del_flag)
+        values
+        <foreach collection="sysQuartzs" item="item" index="index" separator=",">
+            (
+            #{item.id}, #{item.className}, #{item.cronExpression}, #{item.param}, #{item.descript},
+            #{item.quartzStatus}, #{item.createTime}, #{item.createUser}, #{item.status}, #{item.delFlag} )
+        </foreach>
+    </insert>
+
+    <!-- 通过主键修改数据 -->
+    <update id="update">
+        update hd_oa.sys_quartz
+        <set>
+            <if test="className != null and className != ''">
+                class_name = #{className},
+            </if>
+            <if test="cronExpression != null and cronExpression != ''">
+                cron_expression = #{cronExpression},
+            </if>
+            <if test="param != null and param != ''">
+                param = #{param},
+            </if>
+            <if test="descript != null and descript != ''">
+                descript = #{descript},
+            </if>
+            <if test="quartzStatus != null and quartzStatus != ''">
+                quartz_status = #{quartzStatus},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="createUser != null">
+                create_user = #{createUser},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="delFlag != null">
+                del_flag = #{delFlag},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from sys_quartz where id = #{id}
+    </delete>
+
+
+    <!--通过条件删除数据-->
+    <delete id="deleteByEntity" parameterType="com.js.entity.SysQuartz">
+        delete from sys_quartz
+        <where>
+            <if test="className != null">
+                and class_name = #{className,jdbcType=VARCHAR}
+            </if>
+            <if test="cronExpression != null">
+                and cron_expression = #{cronExpression,jdbcType=VARCHAR}
+            </if>
+            <if test="param != null">
+                and param = #{param,jdbcType=VARCHAR}
+            </if>
+            <if test="descript != null">
+                and descript = #{descript,jdbcType=VARCHAR}
+            </if>
+            <if test="quartzStatus != null">
+                and quartz_status = #{quartzStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="createUser != null">
+                and create_user = #{createUser,jdbcType=INTEGER}
+            </if>
+            <if test="status != null">
+                and status = #{status,jdbcType=INTEGER}
+            </if>
+            <if test="delFlag != null">
+                and del_flag = #{delFlag,jdbcType=INTEGER}
+            </if>
+        </where>
+    </delete>
+
+    <!--通过主键列表删除，列表长度不能为0-->
+    <delete id="deleteByIds">
+        delete from sys_quartz where id in
+        <foreach item="item" collection="list" separator="," open="(" close=")" index="index">
+            #{item}
+        </foreach>
+    </delete>
+
+    <!-- 条件查询总数 -->
+    <select id="countByEntity" parameterType="com.js.entity.SysQuartz" resultType="int">
+        select count(*) from sys_quartz
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="className != null">
+                and class_name = #{className,jdbcType=VARCHAR}
+            </if>
+            <if test="cronExpression != null">
+                and cron_expression = #{cronExpression,jdbcType=VARCHAR}
+            </if>
+            <if test="param != null">
+                and param = #{param,jdbcType=VARCHAR}
+            </if>
+            <if test="descript != null">
+                and descript = #{descript,jdbcType=VARCHAR}
+            </if>
+            <if test="quartzStatus != null">
+                and quartz_status = #{quartzStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="createUser != null">
+                and create_user = #{createUser,jdbcType=INTEGER}
+            </if>
+            <if test="status != null">
+                and status = #{status,jdbcType=INTEGER}
+            </if>
+            <if test="delFlag != null">
+                and del_flag = #{delFlag,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <!--通过主键修改实体列表，列表长度不能为0，注意：当实体属性为null时，对应的列也会别更新为null-->
+    <update id="updateBatch" parameterType="list">
+        update sys_quartz
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="class_name = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.className}
+                </foreach>
+            </trim>
+            <trim prefix="cron_expression = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.cronExpression}
+                </foreach>
+            </trim>
+            <trim prefix="param = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.param}
+                </foreach>
+            </trim>
+            <trim prefix="descript = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.descript}
+                </foreach>
+            </trim>
+            <trim prefix="quartz_status = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.quartzStatus}
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.createTime}
+                </foreach>
+            </trim>
+            <trim prefix="create_user = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.createUser}
+                </foreach>
+            </trim>
+            <trim prefix="status = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.status}
+                </foreach>
+            </trim>
+            <trim prefix="del_flag = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.delFlag}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item.id,jdbcType=INTEGER}
+        </foreach>
+    </update>
+</mapper>
