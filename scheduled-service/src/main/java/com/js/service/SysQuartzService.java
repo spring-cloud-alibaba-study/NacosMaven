@@ -4,6 +4,7 @@ import com.js.entity.SysQuartz;
 import com.js.enums.QuartzStatusEnum;
 import com.js.mapper.SysQuartzMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.quartz.CronExpression;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;
 import org.quartz.Job;
@@ -16,6 +17,8 @@ import org.quartz.TriggerKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class SysQuartzService {
@@ -26,7 +29,22 @@ public class SysQuartzService {
     @Autowired
     private SysQuartzMapper sysQuartzMapper;
 
+    /**
+     * @return
+     * @Description: 条件查询
+     * @Param [condition]
+     * @Author: 渡劫 dujie
+     * @Date: 2021/4/21 2:25 PM
+     */
+    public List<SysQuartz> findByCondition(SysQuartz condition) {
+        return sysQuartzMapper.selectList(condition);
+    }
+
     public Boolean add(SysQuartz sysQuartz) {
+        if (!CronExpression.isValidExpression(sysQuartz.getCronExpression())) {
+            throw new RuntimeException("表达式拼写异常");
+        }
+
         SysQuartz condition = new SysQuartz();
         condition.setClassName(sysQuartz.getClassName());
         Integer result = sysQuartzMapper.countByEntity(condition);
