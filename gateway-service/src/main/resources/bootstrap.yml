@@ -5,5 +5,12 @@ spring:
     nacos:
       discovery:
         server-addr: 60.205.230.70:8848
+        servive-name: ${spring.application.name}
+        service: ${spring.application.name}
+        cluster-name: nacos
+        username: nacos
+        password: nacos
+        namespace: nacos-maven
+        instance-enabled: true
 server:
   port: 8888
