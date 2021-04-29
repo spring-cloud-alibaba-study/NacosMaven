@@ -1,13 +1,18 @@
 spring:
+  application:
+    name: operation-service
   cloud:
     nacos:
       discovery:
         server-addr: 60.205.230.70:8848
+#        service: gateway-service
+        namespace: nacos-maven
   redis:
     host: 60.205.230.70
     port: 6379
     password: root
 server:
+  port: 8088 #服务端口
   tomcat:
     # 该线程池可以容纳的最大线程数。默认值：200；
     maxThreads: 300
@@ -36,3 +41,5 @@ dubbo:
     name: dubbo
   registry:
     address: nacos://60.205.230.70:8848
+  cloud:
+    subscribed-services: '*'

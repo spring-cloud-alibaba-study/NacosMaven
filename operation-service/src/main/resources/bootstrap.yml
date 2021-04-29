@@ -1,6 +1,0 @@
-# 应用名称
-spring:
-  application:
-    name: operation-service
-server:
-  port: 8088 #服务端口
