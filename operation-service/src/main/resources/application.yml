@@ -5,12 +5,13 @@ spring:
     nacos:
       discovery:
         server-addr: 60.205.230.70:8848
-#        service: gateway-service
         namespace: nacos-maven
   redis:
     host: 60.205.230.70
     port: 6379
     password: root
+#  main:
+#    allow-bean-definition-overriding: true
 server:
   port: 8088 #服务端口
   tomcat:
@@ -25,6 +26,7 @@ server:
 application:
   base-package: com.js
 
+
 logging:
   config: classpath:logback-spring.xml
 
@@ -36,10 +38,17 @@ info:
 dubbo:
   scan:
     base-packages: ${application.base-package}.dubbo
+  registry:
+    address: nacos://60.205.230.70:8848
+    password: nacos
+    username: nacos
   protocol:
     port: 20881
     name: dubbo
-  registry:
-    address: nacos://60.205.230.70:8848
   cloud:
     subscribed-services: '*'
+management:                #暴露监控
+  endpoints:
+    web:
+      exposure:
+        include: '*'

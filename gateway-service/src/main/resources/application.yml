@@ -1,6 +1,8 @@
 server:
   port: 8888
 spring:
+  application:
+    name: gateway-service
   cloud:
     nacos:
       discovery:
@@ -9,8 +11,6 @@ spring:
 #        password: nacos
         namespace: nacos-maven
         serverAddr: 60.205.230.70:8848
-        service: gateway-service
-
     gateway:
       discovery:
         locator:
