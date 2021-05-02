@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: operation-service
   cloud:
     nacos:
       discovery:
@@ -13,7 +11,6 @@ spring:
 #  main:
 #    allow-bean-definition-overriding: true
 server:
-  port: 8088 #服务端口
   tomcat:
     # 该线程池可以容纳的最大线程数。默认值：200；
     maxThreads: 300
@@ -40,8 +37,6 @@ dubbo:
     base-packages: ${application.base-package}.dubbo
   registry:
     address: nacos://60.205.230.70:8848
-    password: nacos
-    username: nacos
   protocol:
     port: 20881
     name: dubbo

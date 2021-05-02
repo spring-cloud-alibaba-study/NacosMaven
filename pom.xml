@@ -8,8 +8,6 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>NacosMaven</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
     <modules>
         <module>common</module>
         <module>gateway-service</module>
@@ -25,16 +23,17 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot.version>2.4.5</spring-boot.version>
-        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
+        <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
+        <spring-cloud-alibaba.version>2.2.2.RELEASE</spring-cloud-alibaba.version>
     </properties>
 
     <dependencies>
-        <!-- 最新版nacos依赖-->
+        <!--  阿里巴巴官方文档对应的新版本依赖      -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <version>2021.1</version>
+            <version>2.2.2.RELEASE</version>
+<!--            <version>2.2.5.RELEASE</version>-->
             <exclusions>
                 <exclusion>
                     <groupId>com.alibaba.nacos</groupId>
@@ -43,20 +42,25 @@
             </exclusions>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.alibaba.nacos/nacos-client -->
-        <dependency>
-            <groupId>com.alibaba.nacos</groupId>
-            <artifactId>nacos-client</artifactId>
-            <version>2.0.1</version>
-        </dependency>
+    <!-- https://mvnrepository.com/artifact/com.alibaba.nacos/nacos-client -->
+    <dependency>
+        <groupId>com.alibaba.nacos</groupId>
+        <artifactId>nacos-client</artifactId>
+        <version>2.0.1</version>
+    </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <version>3.0.2</version>
+            <version>2.2.2.RELEASE</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.9.1</version>
+        </dependency>
 
 
         <!--        springboot依赖-->
@@ -93,7 +97,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-dependencies</artifactId>
-            <version>2020.0.0</version>
+            <version>Hoxton.SR8</version>
             <type>pom</type>
             <scope>runtime</scope>
         </dependency>
@@ -118,7 +122,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 
