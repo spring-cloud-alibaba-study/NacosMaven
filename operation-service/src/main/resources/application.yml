@@ -36,3 +36,10 @@ dubbo:
     name: dubbo
   registry:
     address: nacos://60.205.230.70:8848
+
+feign:
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+

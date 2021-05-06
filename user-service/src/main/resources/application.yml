@@ -38,3 +38,8 @@ dubbo:
     address: nacos://60.205.230.70:8848
   application:
     name: user-service
+feign:
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
