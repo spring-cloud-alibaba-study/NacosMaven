@@ -40,3 +40,10 @@ dubbo:
     name: operation-service
   consumer:
     check: false
+
+feign:
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+

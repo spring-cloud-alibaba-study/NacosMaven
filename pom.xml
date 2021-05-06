@@ -70,8 +70,6 @@
             <scope>provided</scope>
         </dependency>
 
-
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -85,6 +83,12 @@
             <version>Hoxton.SR11</version>
             <type>pom</type>
             <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+            <version>11.2</version>
         </dependency>
 
 

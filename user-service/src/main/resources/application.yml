@@ -40,3 +40,8 @@ dubbo:
     name: user-service
   consumer:
     check: false
+feign:
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
