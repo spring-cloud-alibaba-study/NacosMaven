@@ -3,13 +3,10 @@ spring:
     nacos:
       discovery:
         server-addr: 60.205.230.70:8848
-        namespace: nacos-maven
   redis:
     host: 60.205.230.70
     port: 6379
     password: root
-#  main:
-#    allow-bean-definition-overriding: true
 server:
   tomcat:
     # 该线程池可以容纳的最大线程数。默认值：200；
@@ -23,7 +20,6 @@ server:
 application:
   base-package: com.js
 
-
 logging:
   config: classpath:logback-spring.xml
 
@@ -33,17 +29,14 @@ info:
   version: v1.0
   author: 技术部
 dubbo:
-  scan:
-    base-packages: ${application.base-package}.dubbo
-  registry:
-    address: nacos://60.205.230.70:8848
+#  scan:
+#    base-packages: ${application.base-package}.dubbo
   protocol:
     port: 20881
     name: dubbo
-  cloud:
-    subscribed-services: '*'
-management:                #暴露监控
-  endpoints:
-    web:
-      exposure:
-        include: '*'
+  registry:
+    address: nacos://60.205.230.70:8848
+  application:
+    name: operation-service
+  consumer:
+    check: false

@@ -9,8 +9,7 @@
 
     <!-- 提供方应用信息，用于计算依赖关系 -->
 
-<!--    <dubbo:registry protocol="nacos" address="nacos://60.205.230.70" port="20881" timeout="100000" />-->
-<!--    <dubbo:monitor address="nacos://60.205.230.70" />-->
+    <dubbo:registry protocol="dubbo" address="${dubbo.registry.address}" timeout="50000"/>
 
     <import resource="classpath:dubbo/spring-dubbo-provider.xml" />
     <import resource="classpath:dubbo/spring-dubbo-consumer.xml" />

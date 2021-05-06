@@ -23,8 +23,8 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
-        <spring-cloud-alibaba.version>2.2.2.RELEASE</spring-cloud-alibaba.version>
+        <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
+        <spring-cloud-alibaba.version>2.2.5.RELEASE</spring-cloud-alibaba.version>
     </properties>
 
     <dependencies>
@@ -32,30 +32,15 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <version>2.2.2.RELEASE</version>
-<!--            <version>2.2.5.RELEASE</version>-->
-<!--            <exclusions>-->
-<!--                <exclusion>-->
-<!--                    <groupId>com.alibaba.nacos</groupId>-->
-<!--                    <artifactId>nacos-client</artifactId>-->
-<!--                </exclusion>-->
-<!--            </exclusions>-->
+            <version>2.2.5.RELEASE</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.alibaba.nacos/nacos-client -->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.nacos</groupId>-->
-<!--            <artifactId>nacos-client</artifactId>-->
-<!--            <version>2.0.1</version>-->
-<!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <version>2.2.2.RELEASE</version>
+            <version>2.2.5.RELEASE</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp -->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
@@ -97,10 +82,11 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-dependencies</artifactId>
-            <version>Hoxton.SR4</version>
+            <version>Hoxton.SR11</version>
             <type>pom</type>
             <scope>runtime</scope>
         </dependency>
+
 
     </dependencies>
 
