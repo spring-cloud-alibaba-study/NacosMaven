@@ -1,4 +1,8 @@
+
+# 应用名称
 spring:
+  application:
+    name: user-service
   cloud:
     nacos:
       discovery:
@@ -8,6 +12,7 @@ spring:
     port: 6379
     password: root
 server:
+  port: 8081 #服务端口
   tomcat:
     # 该线程池可以容纳的最大线程数。默认值：200；
     maxThreads: 300
