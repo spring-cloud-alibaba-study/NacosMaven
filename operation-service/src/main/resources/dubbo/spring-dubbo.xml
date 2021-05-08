@@ -7,7 +7,7 @@
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/util
         http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
-    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <!-- 提供方应用信息，用于计算依赖关系 file="${catalina.home}/dubbo-registry/dubbo-registry.properties"-->
 
     <dubbo:registry protocol="dubbo" address="${dubbo.registry.address}" timeout="50000"/>
 
