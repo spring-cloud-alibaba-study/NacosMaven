@@ -20,11 +20,7 @@ public class IdUtil {
         return String.valueOf(SnowFlakeUtil.getInstance().nextId()).replace("-", "");
     }
 
-    public static void main(String[] args) {
-        System.out.println(1 << 10);
-        for (int i = 0; i < 1 << 10; i++) {
-            System.out.println(getUuid());
-        }
-        System.out.println("test1");
+    public static synchronized Long getLongId() {
+        return SnowFlakeUtil.getInstance().nextId();
     }
 }

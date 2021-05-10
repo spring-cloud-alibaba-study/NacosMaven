@@ -1,113 +1,136 @@
 package com.js.util;
 
 /**
- * @Description: twitter的snowflake算法 -- java实现
+ * @Description: twitter的snowflake算法 -- java实现 如果项目重启存在时间回拨的情况
  * @Author: 渡劫 dujie
  * @Date: 2021/1/1 9:37 PM
  **/
 public class SnowFlake {
 
     /**
-     * 起始的时间戳
-     */
-    private final static long START_STMP = 1480166465631L;
+     * 机器ID  2进制5位  32位减掉1位 31个
+     **/
+    private long workerId;
+    /**
+     * 机房ID 2进制5位  32位减掉1位 31个
+     **/
+    private long datacenterId;
+    /**
+     * 设置一个时间初始值    2^41 - 1   差不多可以用69年
+     **/
+    private long twepoch = 1609430400000L;
+    /**
+     * 5位的机器id
+     **/
+    private long workerIdBits = 5L;
+    /**
+     * 5位的机房id
+     **/
+    private long datacenterIdBits = 5L;
+    /**
+     * 每毫秒内产生的id数 2 的 12次方
+     **/
+    private long sequenceBits = 12L;
+    /**
+     * 这个是二进制运算，就是5 bit最多只能有31个数字，也就是说机器id最多只能是32以内
+     **/
+    private long maxWorkerId = -1L ^ (-1L << workerIdBits);
+    /**
+     * 这个是一个意思，就是5 bit最多只能有31个数字，机房id最多只能是32以内
+     **/
+    private long maxDatacenterId = -1L ^ (-1L << datacenterIdBits);
 
     /**
-     * 序列号占用的位数
+     * 记录产生时间毫秒数，判断是否是同1毫秒
      **/
-    private final static long SEQUENCE_BIT = 12;
-    /**
-     * 机器标识占用的位数
-     **/
-    private final static long MACHINE_BIT = 8;
-    /**
-     * 数据中心占用的位数
-     **/
-    private final static long DATACENTER_BIT = 8;
+    private long lastTimestamp = -1L;
+
+    private long workerIdShift = sequenceBits;
+    private long datacenterIdShift = sequenceBits + workerIdBits;
+    private long timestampLeftShift = sequenceBits + workerIdBits + datacenterIdBits;
+    private long sequenceMask = -1L ^ (-1L << sequenceBits);
 
     /**
-     * 每一部分的最大值
-     */
-    private final static long MAX_DATACENTER_NUM = -1L ^ (-1L << DATACENTER_BIT);
-    private final static long MAX_MACHINE_NUM = -1L ^ (-1L << MACHINE_BIT);
-    private final static long MAX_SEQUENCE = -1L ^ (-1L << SEQUENCE_BIT);
+     * 代表一毫秒内生成的多个id的最新序号  12位 4096 -1 = 4095 个
+     **/
+    private long sequence = sequenceMask;
 
-    /**
-     * 每一部分向左的位移
-     */
-    private final static long MACHINE_LEFT = SEQUENCE_BIT;
-    private final static long DATACENTER_LEFT = SEQUENCE_BIT + MACHINE_BIT;
-    private final static long TIMESTMP_LEFT = DATACENTER_LEFT + DATACENTER_BIT;
 
-    /**
-     * 数据中心
-     **/
-    private final long datacenterId;
-    /**
-     * 机器标识
-     **/
-    private final long machineId;
-    /**
-     * 序列号
-     **/
-    private long sequence = 0L;
-    /**
-     * 上一次时间戳
-     **/
-    private long lastStmp = -1L;
+    public SnowFlake(long workerId, long datacenterId) {
 
-    public SnowFlake(long datacenterId, long machineId) {
-        if (datacenterId > MAX_DATACENTER_NUM || datacenterId < 0) {
-            throw new IllegalArgumentException("datacenterId can't be greater than MAX_DATACENTER_NUM or less than 0");
+        // 检查机房id和机器id是否超过31 不能小于0
+        if (workerId > maxWorkerId || workerId < 0) {
+            throw new IllegalArgumentException(String.format("worker Id can't be greater than %d or less than 0", maxWorkerId));
         }
-        if (machineId > MAX_MACHINE_NUM || machineId < 0) {
-            throw new IllegalArgumentException("machineId can't be greater than MAX_MACHINE_NUM or less than 0");
+
+        if (datacenterId > maxDatacenterId || datacenterId < 0) {
+            throw new IllegalArgumentException(String.format("datacenter Id can't be greater than %d or less than 0", maxDatacenterId));
         }
+        this.workerId = workerId;
         this.datacenterId = datacenterId;
-        this.machineId = machineId;
     }
 
     /**
-     * @Description: 产生下一个ID
-     * @Return: long
+     * @return
+     * @Description: 这个是核心方法，通过调用nextId()方法，让当前这台机器上的snowflake算法程序生成一个全局唯一的id
+     * @Param
      * @Author: 渡劫 dujie
-     * @Date: 2021/1/1 10:08 PM
-     **/
+     * @Date: 2021/5/10 2:29 PM
+     */
     public synchronized long nextId() {
-        long currStmp = System.currentTimeMillis();
-        if (currStmp < lastStmp) {
-            throw new RuntimeException("Clock moved backwards.  Refusing to generate id");
+        // 这儿就是获取当前时间戳，单位是毫秒
+        long timestamp = timeGen();
+        if (timestamp < lastTimestamp) {
+            System.err.printf("clock is moving backwards. Rejecting requests until %d.", lastTimestamp);
+            throw new RuntimeException(String.format("Clock moved backwards. Refusing to generate id for %d milliseconds", lastTimestamp - timestamp));
         }
 
-        if (currStmp == lastStmp) {
-            //相同毫秒内，序列号自增
-            sequence = (sequence + 1) & MAX_SEQUENCE;
-            //同一毫秒的序列数已经达到最大
-            if (sequence == 0L) {
-                currStmp = getNextMill();
+        // 下面是说假设在同一个毫秒内，又发送了一个请求生成一个id  这个时候就得把seqence序号给递增1，最多就是4096
+        if (lastTimestamp == timestamp) {
+
+            // 这个意思是说一个毫秒内最多只能有4096个数字，无论你传递多少进来，
+            //这个位运算保证始终就是在4096这个范围内，避免你自己传递个sequence超过了4096这个范围
+            sequence = (sequence + 1) & sequenceMask;
+            //当某一毫秒的时间，产生的id数 超过4095，系统会进入等待，直到下一毫秒，系统继续产生ID
+            if (sequence == 0) {
+                timestamp = tilNextMillis(lastTimestamp);
             }
+
         } else {
-            //不同毫秒内，序列号置为0
-            sequence = 0L;
+            sequence = 0;
         }
-
-        lastStmp = currStmp;
-
-        return (currStmp - START_STMP) << TIMESTMP_LEFT
-                //时间戳部分
-                | datacenterId << DATACENTER_LEFT
-                //数据中心部分
-                | machineId << MACHINE_LEFT
-                //机器标识部分
-                | sequence;
-        //序列号部分
+        // 这儿记录一下最近一次生成id的时间戳，单位是毫秒
+        lastTimestamp = timestamp;
+        // 这儿就是最核心的二进制位运算操作，生成一个64bit的id
+        // 先将当前时间戳左移，放到41 bit那儿；将机房id左移放到5 bit那儿；将机器id左移放到5 bit那儿；将序号放最后12 bit
+        // 最后拼接起来成一个64 bit的二进制数字，转换成10进制就是个long型
+        return ((timestamp - twepoch) << timestampLeftShift) |
+                (datacenterId << datacenterIdShift) |
+                (workerId << workerIdShift) | sequence;
     }
 
-    private long getNextMill() {
-        long mill = System.currentTimeMillis();
-        while (mill <= lastStmp) {
-            mill = System.currentTimeMillis();
+    /**
+     * 当某一毫秒的时间，产生的id数 超过4095，系统会进入等待，直到下一毫秒，系统继续产生ID
+     *
+     * @param lastTimestamp
+     * @return
+     */
+    private long tilNextMillis(long lastTimestamp) {
+        long timestamp = timeGen();
+        while (timestamp <= lastTimestamp) {
+            timestamp = timeGen();
         }
-        return mill;
+        return timestamp;
+    }
+
+    /**
+     * @return
+     * @Description: 获取当前时间戳
+     * @Param
+     * @Author: 渡劫 dujie
+     * @Date: 2021/5/10 2:27 PM
+     */
+    private long timeGen() {
+        return System.currentTimeMillis();
     }
 }
