@@ -25,6 +25,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
         <spring-cloud-alibaba.version>2.2.5.RELEASE</spring-cloud-alibaba.version>
+        <user-api.version>1.0-SNAPSHOT</user-api.version>
+        <operation-api.version>1.0-SNAPSHOT</operation-api.version>
     </properties>
 
     <dependencies>
