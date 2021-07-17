@@ -37,7 +37,6 @@ public class TestController {
                 return testDubboService.sayHello("jiangshuang");
             }
             throw new RuntimeException("获取分布式锁失败");
-
         } catch (Exception e) {
             log.error("调用dubbo出现异常", e);
             throw new RuntimeException(e);
