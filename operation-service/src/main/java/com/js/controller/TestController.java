@@ -31,20 +31,18 @@ public class TestController {
         log.info("进入消费者");
         RLock lock = redissonClient.getLock("test1");
         try {
-            Boolean temp = lock.tryLock(100, 200, TimeUnit.SECONDS);
-            log.info("当前锁的状态{}",lock.isLocked());
-            log.info("获取分布式锁的结果为{}", temp);
-            if (temp) {
-                wait(9000);
+            if (lock.tryLock(0, 2000, TimeUnit.SECONDS)) {
+                log.info("获取分布式锁成功");
+                Thread.sleep(9000);
                 return testDubboService.sayHello("jiangshuang");
             }
-            log.warn("获取分布式锁失败");
+            throw new RuntimeException("获取分布式锁失败");
 
         } catch (Exception e) {
-            log.info("调用dubbo出现异常");
+            log.error("调用dubbo出现异常", e);
+            throw new RuntimeException(e);
         } finally {
             lock.unlock();
         }
-        return null;
     }
 }
