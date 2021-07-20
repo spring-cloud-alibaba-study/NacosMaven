@@ -31,7 +31,6 @@ public class TestController {
         try {
             if (distributedRedisLock.tryLock("TestLog", 0, 2000, TimeUnit.SECONDS)) {
                 log.info("获取分布式锁成功");
-                Thread.sleep(90000);
                 return testDubboService.sayHello("test1");
             }
             log.info("获取分布式锁失败");
