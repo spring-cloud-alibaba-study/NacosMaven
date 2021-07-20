@@ -4,9 +4,12 @@ import org.apache.commons.lang.StringUtils;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Objects;
 
 /**
  * @author
@@ -16,20 +19,20 @@ import org.springframework.context.annotation.Configuration;
 public class RedissonConfig {
     private static final String REDIS_PRE = "redis://";
 
-    @Value("${spring.redis.host}")
-    private String host;
-
-    @Value("${spring.redis.port}")
-    private String port;
+    @Autowired
+    private RedisProperties redisProperties;
 
     @Bean
     public RedissonClient redissonClient() {
-        if (StringUtils.isBlank(host) || StringUtils.isBlank(port)){
+        if (StringUtils.isBlank(redisProperties.getHost()) || Objects.isNull(redisProperties.getPort())) {
             throw new RuntimeException("请配置Spring的redis环境");
         }
         Config config = new Config();
-        config.useSingleServer().setAddress(REDIS_PRE + host + ":" + port);
+        config.useSingleServer().setAddress(REDIS_PRE + redisProperties.getHost() + ":" + redisProperties.getPort())
+                .setPassword(StringUtils.isBlank(redisProperties.getPassword()) ? null : redisProperties.getPassword())
+                .setDatabase(redisProperties.getDatabase());
 
+        System.out.println(redisProperties.getPassword());
         RedissonClient redisson = Redisson.create(config);
 
         return redisson;
