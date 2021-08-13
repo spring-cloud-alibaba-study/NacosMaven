@@ -1,5 +1,6 @@
 package com.js.advices;
 
+import com.js.enums.ExceptionEnum;
 import com.js.response.BaseResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,6 +14,6 @@ public class CommonExceptionAdvice {
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public BaseResponse errorHandler() {
-        return BaseResponse.buildFail();
+        return BaseResponse.buildFail(ExceptionEnum.NETWORH_ANOMALY_ERRORTYPE);
     }
 }

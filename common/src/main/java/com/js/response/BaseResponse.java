@@ -22,44 +22,66 @@ public class BaseResponse<T> {
      **/
     private T data;
 
-    private Exception exception;
-
-    public static <T> BaseResponse<T> buildSuccess(){
-        return build(StatusCode.SUCCESS.getCode(), StatusCode.SUCCESS.getMsg(), null);
-    }
-    public static <T> BaseResponse<T> buildSuccess(String message){
-        return build(StatusCode.SUCCESS.getCode(), message, null);
-    }
-
-    public static <T> BaseResponse<T> buildSuccess(String message, T data){
-        return build(StatusCode.SUCCESS.getCode(), message, data);
-    }
-
-    public static <T> BaseResponse<T> buildSuccess(T data){
-        return build(StatusCode.SUCCESS.getCode(), StatusCode.SUCCESS.getMsg(), data);
-    }
-    public static <T> BaseResponse<T> buildFail(){
-        return build(StatusCode.FAIL.getCode(), StatusCode.FAIL.getMsg(), null);
-    }
-
-    public static <T> BaseResponse<T> buildFail(String message){
-        return build(StatusCode.FAIL.getCode(), message, null);
-    }
-
-    public static <T> BaseResponse<T> build(String code, String message, T data){
-        return new BaseResponse<>(code, message, data);
-    }
-
-    public static <T> BaseResponse<T> build(ExceptionEnum exceptionEnum, T data){
-        return build(exceptionEnum.getCodeException(), exceptionEnum.getDescribe(), data);
-    }
+    private ExceptionEnum exception;
 
     public BaseResponse() {
+
     }
 
     public BaseResponse(String code, String message, T data) {
         this.code = code;
         this.message = message;
         this.data = data;
+    }
+
+    public BaseResponse(String code, String message, T data, ExceptionEnum exception) {
+        this.code = code;
+        this.message = message;
+        this.data = data;
+        this.exception = exception;
+    }
+
+    public static <T> BaseResponse<T> buildSuccess() {
+        return build(StatusCode.SUCCESS.getCode(), StatusCode.SUCCESS.getMsg(), null);
+    }
+
+    public static <T> BaseResponse<T> buildSuccess(String message) {
+        return build(StatusCode.SUCCESS.getCode(), message, null);
+    }
+
+    public static <T> BaseResponse<T> buildSuccess(String message, T data) {
+        return build(StatusCode.SUCCESS.getCode(), message, data);
+    }
+
+    public static <T> BaseResponse<T> buildSuccess(T data) {
+        return build(StatusCode.SUCCESS.getCode(), StatusCode.SUCCESS.getMsg(), data);
+    }
+
+    public static <T> BaseResponse<T> buildFail() {
+        return build(StatusCode.FAIL.getCode(), StatusCode.FAIL.getMsg(), null);
+    }
+
+    public static <T> BaseResponse<T> buildFail(String message) {
+        return build(StatusCode.FAIL.getCode(), message, null);
+    }
+
+    public static <T> BaseResponse<T> buildFail(ExceptionEnum exceptionEnum) {
+        return build(exceptionEnum.getCodeException(), exceptionEnum.getDescribe(), null, exceptionEnum);
+    }
+
+    public static <T> BaseResponse<T> buildFail(ExceptionEnum exceptionEnum, String message) {
+        return build(exceptionEnum.getCodeException(), message, null, exceptionEnum);
+    }
+
+    public static <T> BaseResponse<T> build(ExceptionEnum exceptionEnum, T data) {
+        return build(exceptionEnum.getCodeException(), exceptionEnum.getDescribe(), data);
+    }
+
+    public static <T> BaseResponse<T> build(String code, String message, T data, ExceptionEnum exceptionEnum) {
+        return new BaseResponse<>(code, message, data, exceptionEnum);
+    }
+
+    public static <T> BaseResponse<T> build(String code, String message, T data) {
+        return new BaseResponse<>(code, message, data);
     }
 }

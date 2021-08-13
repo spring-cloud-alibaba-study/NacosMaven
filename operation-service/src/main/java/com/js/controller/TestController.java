@@ -2,6 +2,8 @@ package com.js.controller;
 
 import com.js.distributed.DistributedRedisLock;
 import com.js.dubbo.TestDubboService;
+import com.js.enums.ExceptionEnum;
+import com.js.exception.SystemException;
 import com.js.response.BaseResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,16 +34,15 @@ public class TestController {
         try {
             if (distributedRedisLock.tryLock("TestLog", 0, 2000, TimeUnit.SECONDS)) {
                 log.info("获取分布式锁成功");
-                return testDubboService.sayHello("test1");
+                return BaseResponse.buildSuccess(testDubboService.sayHello("test1"));
             }
             log.info("获取分布式锁失败");
-            throw new RuntimeException("获取分布式锁失败");
+            return BaseResponse.buildFail(ExceptionEnum.NO_REPEAT_CLICK);
         } catch (Exception e) {
             log.error("调用dubbo出现异常", e);
-            throw new RuntimeException(e);
+            throw new SystemException(e.getMessage());
         } finally {
             distributedRedisLock.unlock("TestLog");
         }
-        return BaseResponse.buildSuccess(testDubboService.sayHello("jiangshuang"));
     }
 }
