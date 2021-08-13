@@ -11,10 +11,7 @@
     <description>用户模块API</description>
     <artifactId>user-api</artifactId>
     <version>${user-api.version}</version>
-
     <name>user-api</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
 
     <dependencies>
 

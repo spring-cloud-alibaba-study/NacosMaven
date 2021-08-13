@@ -4,9 +4,10 @@ spring:
       discovery:
         server-addr: 60.205.230.70:8848
   redis:
-    host: 60.205.230.70
+    host: 127.0.0.1
     port: 6379
-    password: root
+    password:
+    database: 8
 server:
   tomcat:
     # 该线程池可以容纳的最大线程数。默认值：200；
