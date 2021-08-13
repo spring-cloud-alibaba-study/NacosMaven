@@ -27,3 +27,6 @@ feign:
     enabled: true
   httpclient:
     enabled: false
+
+logging:
+  config: classpath:logback-spring.xml
