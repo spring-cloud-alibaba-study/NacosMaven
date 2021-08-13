@@ -3,6 +3,11 @@ spring:
     nacos:
       discovery:
         server-addr: 60.205.230.70:8848
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 8
 server:
   tomcat:
     # 该线程池可以容纳的最大线程数。默认值：200；
@@ -34,3 +39,8 @@ dubbo:
     address: nacos://60.205.230.70:8848
   application:
     name: user-service
+feign:
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
