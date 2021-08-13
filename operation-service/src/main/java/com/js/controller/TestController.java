@@ -1,6 +1,7 @@
 package com.js.controller;
 
 import com.js.dubbo.TestDubboService;
+import com.js.response.BaseResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +21,8 @@ public class TestController {
     private TestDubboService testDubboService;
 
     @GetMapping("/test")
-    public String getString() {
+    public BaseResponse<String> getString() {
         log.info("进入消费者");
-        return testDubboService.sayHello("jiangshuang");
+        return BaseResponse.buildSuccess(testDubboService.sayHello("jiangshuang"));
     }
 }
