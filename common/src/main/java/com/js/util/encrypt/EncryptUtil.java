@@ -1,4 +1,4 @@
-package com.js.util;
+package com.js.util.encrypt;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
