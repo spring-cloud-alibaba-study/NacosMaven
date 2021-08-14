@@ -15,8 +15,7 @@ public enum ExceptionEnum {
     /**
      * 网络异常
      **/
-    NETWORH_ANOMALY_ERRORTYPE("NETWORH_ANOMALY_ERRORTYPE", "网络异常,请稍后再试")
-    ;
+    NETWORH_ANOMALY_ERRORTYPE("NETWORH_ANOMALY_ERRORTYPE", "网络异常,请稍后再试");
     private String codeException;
     /**
      * 返回前端的数据信息

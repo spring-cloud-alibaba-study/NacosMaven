@@ -1,5 +1,7 @@
 package com.js.util;
 
+import com.js.util.snow.SnowFlakeUtil;
+
 import java.util.UUID;
 
 /**
