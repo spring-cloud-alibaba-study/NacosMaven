@@ -1,4 +1,4 @@
-package com.js.util;
+package com.js.util.net;
 
 import org.apache.commons.lang3.StringUtils;
 
