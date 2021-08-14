@@ -1,4 +1,4 @@
-package com.js.util;
+package com.js.util.snow;
 
 /**
  * @Description: twitter的snowflake算法 -- java实现 如果项目重启存在时间回拨的情况
