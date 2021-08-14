@@ -15,7 +15,25 @@ public enum ExceptionEnum {
     /**
      * 网络异常
      **/
-    NETWORH_ANOMALY_ERRORTYPE("NETWORH_ANOMALY_ERRORTYPE", "网络异常,请稍后再试");
+    NETWORH_ANOMALY_ERRORTYPE("NETWORH_ANOMALY_ERRORTYPE", "网络异常,请稍后再试"),
+    /**
+     * 当出现参数异常时返回的code码
+     */
+    INVALIDPARAMS("INVALIDPARAMS", "非法的参数!"),
+    /**
+     * 当用户未登录时返回的code码
+     */
+    USERNOTLOGIN("USERNOTLOGIN", "用户没登录"),
+
+    /**
+     * 用户名或者密码错误
+     **/
+    UNKNOW_USER("UNKNOW_USER", "用户名或者密码错误"),
+
+    /**
+     * 系统异常
+     **/
+    SYSTEM_EXCEPTION("SYSTEM_EXCEPTION", "系统出现异常");
     private String codeException;
     /**
      * 返回前端的数据信息
