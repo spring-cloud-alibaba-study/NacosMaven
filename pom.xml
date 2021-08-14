@@ -94,13 +94,13 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-dependencies</artifactId>
-            <version>2020.0.2</version>
-            <type>pom</type>
-            <scope>runtime</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-dependencies</artifactId>-->
+<!--            <version>2020.0.2</version>-->
+<!--            <type>pom</type>-->
+<!--            <scope>runtime</scope>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>io.github.openfeign</groupId>
