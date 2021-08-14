@@ -14,24 +14,7 @@ public enum StatusCode {
      * 操作失败时返回的code码
      */
     FAIL("-1", "操作失败"),
-    /**
-     * 当出现参数异常时返回的code码
-     */
-    INVALIDPARAMS("201", "非法的参数!"),
-    /**
-     * 当用户未登录时返回的code码
-     */
-    USERNOTLOGIN("202", "用户没登录"),
-
-    /**
-     * 用户名或者密码错误
-     **/
-    UNKNOW_USER("203", "用户名或者密码错误"),
-
-    /**
-     * 系统异常
-     **/
-    SYSTEM_EXCEPTION("500", "系统出现异常");
+    ;
 
     /**
      * 返回前端的code码
