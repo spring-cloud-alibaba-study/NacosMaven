@@ -66,15 +66,15 @@ public class BaseResponse<T> {
     }
 
     public static <T> BaseResponse<T> buildFail(ExceptionEnum exceptionEnum) {
-        return build(exceptionEnum.getCodeException(), exceptionEnum.getDescribe(), null, exceptionEnum);
+        return build(StatusCode.FAIL.getCode(), exceptionEnum.getDescribe(), null, exceptionEnum);
     }
 
     public static <T> BaseResponse<T> buildFail(ExceptionEnum exceptionEnum, String message) {
-        return build(exceptionEnum.getCodeException(), message, null, exceptionEnum);
+        return build(StatusCode.FAIL.getCode(), message, null, exceptionEnum);
     }
 
     public static <T> BaseResponse<T> build(ExceptionEnum exceptionEnum, T data) {
-        return build(exceptionEnum.getCodeException(), exceptionEnum.getDescribe(), data);
+        return build(StatusCode.FAIL.getCode(), exceptionEnum.getDescribe(), data);
     }
 
     public static <T> BaseResponse<T> build(String code, String message, T data, ExceptionEnum exceptionEnum) {
