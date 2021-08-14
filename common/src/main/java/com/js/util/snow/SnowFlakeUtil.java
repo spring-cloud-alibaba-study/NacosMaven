@@ -1,4 +1,6 @@
-package com.js.util;
+package com.js.util.snow;
+
+import com.js.util.NetUtils;
 
 import java.util.logging.Logger;
 
@@ -22,7 +24,7 @@ public class SnowFlakeUtil {
             synchronized (SnowFlake.class) {
                 if (instance == null) {
                     initManyId();
-                    logger.info("获取雪花算法工具包为空，开始初始化雪花算法工具包数据中心id="+ datacenterId + ",机器id=" +machineId);
+                    logger.info("获取雪花算法工具包为空，开始初始化雪花算法工具包数据中心id=" + datacenterId + ",机器id=" + machineId);
                     instance = new SnowFlake(machineId, datacenterId);
                 }
             }
