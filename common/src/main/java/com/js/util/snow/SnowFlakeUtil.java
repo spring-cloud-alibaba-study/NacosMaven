@@ -1,6 +1,6 @@
 package com.js.util.snow;
 
-import com.js.util.NetUtils;
+import com.js.util.net.NetUtils;
 
 import java.util.logging.Logger;
 
