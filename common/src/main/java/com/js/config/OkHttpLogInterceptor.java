@@ -1,6 +1,6 @@
-package com.js.config.httpclient;
+package com.js.config;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -8,7 +8,7 @@ import okhttp3.ResponseBody;
 
 import java.io.IOException;
 
-@Log4j2
+@Slf4j
 public class OkHttpLogInterceptor implements Interceptor {
     @Override
     public Response intercept(Interceptor.Chain chain) throws IOException {

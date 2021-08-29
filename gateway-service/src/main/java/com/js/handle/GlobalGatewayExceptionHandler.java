@@ -1,7 +1,6 @@
 package com.js.handle;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.reactive.error.ErrorWebExceptionHandler;
 import org.springframework.http.HttpStatus;
@@ -26,8 +25,7 @@ import java.util.Map;
  * @description: 网关异常全局处理
  */
 @Slf4j
-@Getter
-@Setter
+@Data
 public class GlobalGatewayExceptionHandler implements ErrorWebExceptionHandler {
 
     private List<HttpMessageReader<?>> messageReaders = Collections.emptyList();
@@ -37,8 +35,6 @@ public class GlobalGatewayExceptionHandler implements ErrorWebExceptionHandler {
 
     @Override
     public Mono<Void> handle(ServerWebExchange exchange, Throwable throwable) {
-        log.error("网关异常全局处理，异常信息：{}", throwable.getMessage());
-        //这里只是做个最简单的同一的异常结果输出，实际业务可根据throwable不同的异常处理不同的逻辑
         Map result = new HashMap();
         result.put("code", "503");
         result.put("message", "网络连接超时，请稍后再试");
