@@ -12,8 +12,8 @@ knife4j:
     enableFooter: false
     # 是否自定义Footer，默认为false(非自定义)
     enableFooterCustom: true
-    # 是否显示文档中的Open标签栏，默认为true
-    enableOpenApi: false
-    enableSwaggerModels: false
-    # 是否自定义显示Home主页，默认为false
-    enableHomeCustom: false
+#    # 是否显示文档中的Open标签栏，默认为true
+#    enableOpenApi: false
+#    enableSwaggerModels: false
+#    # 是否自定义显示Home主页，默认为false
+#    enableHomeCustom: true
