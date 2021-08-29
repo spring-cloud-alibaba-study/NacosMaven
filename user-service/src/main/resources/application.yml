@@ -5,6 +5,8 @@ spring:
     nacos:
       discovery:
         server-addr: 60.205.230.70:8848
+    compatibility-verifier:
+      enabled: false
   redis:
     host: 127.0.0.1
     port: 6379
