@@ -9,7 +9,7 @@ spring:
     password:
     database: 8
     redisson:
-      file: classpath:redisson.yml
+      file: classpath:application-redisson.yml
 server:
   tomcat:
     # 该线程池可以容纳的最大线程数。默认值：200；

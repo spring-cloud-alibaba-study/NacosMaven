@@ -18,7 +18,7 @@ public class RedissonConfig {
     @Bean(destroyMethod="shutdown",value = "redissonClient")
     public RedissonClient redissonClient() throws IOException {
         RedissonClient redisson = Redisson.create(
-                Config.fromYAML(new ClassPathResource("redisson.yml").getInputStream()));
+                Config.fromYAML(new ClassPathResource("application-redisson.yml").getInputStream()));
         return redisson;
     }
 
