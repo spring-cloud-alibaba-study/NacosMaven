@@ -15,7 +15,7 @@ public enum ExceptionEnum {
     /**
      * 网络异常
      **/
-    NETWORH_ANOMALY_ERRORTYPE("NETWORH_ANOMALY_ERRORTYPE", "网络异常,请稍后再试"),
+    NETWORK_ANOMALY_ERRORTYPE("NETWORK_ANOMALY_ERRORTYPE", "网络异常,请稍后再试"),
     /**
      * 当出现参数异常时返回的code码
      */
