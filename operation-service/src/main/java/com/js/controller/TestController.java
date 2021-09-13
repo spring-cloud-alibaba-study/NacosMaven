@@ -1,6 +1,6 @@
 package com.js.controller;
 
-import com.js.config.ExceptionProperties;
+import com.js.config.TestProperties;
 import com.js.distributed.DistributedRedisLock;
 import com.js.dubbo.TestDubboService;
 import com.js.enums.ExceptionEnum;
@@ -33,12 +33,12 @@ public class TestController {
     private DistributedRedisLock distributedRedisLock;
 
     @Autowired
-    private ExceptionProperties exceptionProperties;
+    private TestProperties testProperties;
 
     @GetMapping("/test")
     @ApiOperation("test方法")
     public BaseResponse<String> getString() {
-        log.info("配置获取的结果为{}",exceptionProperties.getAppId());
+        log.info("配置获取的结果为{}",testProperties.getAppId());
         log.info("进入消费者");
         try {
             if (distributedRedisLock.tryLock("TestLog", 0, 2000, TimeUnit.SECONDS)) {
