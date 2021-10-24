@@ -23,10 +23,10 @@ singleServerConfig:
 #  masterConnectionPoolSize: 64
 #  readMode: "SLAVE"
 #  subscriptionMode: "SLAVE"
-##  nodeAddresses:
-##    - "redis://127.0.0.1:6379"
-##    - "redis://127.0.0.1:6379"
-##    - "redis://127.0.0.1:6379"
+#  nodeAddresses:
+#    - "redis://127.0.0.1:6379"
+#    - "redis://127.0.0.1:6379"
+#    - "redis://127.0.0.1:6379"
 #  scanInterval: 1000
 #  pingConnectionInterval: 0
 #  keepAlive: false
