@@ -14,6 +14,6 @@ public class CommonExceptionAdvice {
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public BaseResponse errorHandler() {
-        return BaseResponse.buildFail(ExceptionEnum.NETWORH_ANOMALY_ERRORTYPE);
+        return BaseResponse.buildFail(ExceptionEnum.NETWORK_ANOMALY_ERRORTYPE);
     }
 }
