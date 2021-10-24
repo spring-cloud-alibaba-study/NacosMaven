@@ -1,5 +1,9 @@
 spring:
   cloud:
+    nacos:
+      discovery:
+#        namespace: nacos-maven
+        serverAddr: 60.205.230.70:8848
     gateway:
       discovery:
         locator:

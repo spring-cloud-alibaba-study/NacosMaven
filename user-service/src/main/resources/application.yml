@@ -41,6 +41,8 @@ dubbo:
     address: nacos://60.205.230.70:8848
   application:
     name: user-service
+  consumer:
+    check: false
 feign:
   okhttp:
     enabled: true

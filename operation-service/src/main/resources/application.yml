@@ -33,13 +33,17 @@ info:
   version: v1.0
   author: 技术部
 dubbo:
-  scan:
-    base-packages: ${application.base-package}.dubbo
+#  scan:
+#    base-packages: ${application.base-package}.dubbo
   protocol:
     port: 20881
     name: dubbo
   registry:
     address: nacos://60.205.230.70:8848
+  application:
+    name: operation-service
+  consumer:
+    check: false
 
 feign:
   okhttp:
