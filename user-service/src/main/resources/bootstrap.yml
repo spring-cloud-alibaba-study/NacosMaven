@@ -4,3 +4,18 @@ server:
 spring:
   application:
     name: user-service
+knife4j:
+  enable: true
+  setting:
+    # 是否不显示Knife4j默认的footer，默认为true(显示)
+    enableFooter: false
+    # 是否自定义Footer，默认为false(非自定义)
+    enableFooterCustom: true
+#    # 是否显示文档中的Open标签栏，默认为true
+#    enableOpenApi: false
+#    # 是否自定义显示Home主页，默认为false
+#    enableHomeCustom: true
+#    # 自定义主页Home的markdown文档路径,只能设置1个，如果设置为目录，则默认取第一个
+#    homeCustomLocation: classpath:markdown/home.md
+    # Ui界面不显示分组元素
+    enableGroup: false

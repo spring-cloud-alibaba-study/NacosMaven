@@ -4,3 +4,16 @@ spring:
     name: operation-service
 server:
   port: 8088 #服务端口
+
+knife4j:
+  enable: true
+  setting:
+    # 是否不显示Knife4j默认的footer，默认为true(显示)
+    enableFooter: false
+    # 是否自定义Footer，默认为false(非自定义)
+    enableFooterCustom: true
+    # 是否显示文档中的Open标签栏，默认为true
+    enableOpenApi: false
+    enableSwaggerModels: false
+    # 是否自定义显示Home主页，默认为false
+    enableHomeCustom: false
