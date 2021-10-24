@@ -1,7 +1,7 @@
 package com.js.response;
 
-import com.js.enums.ExceptionEnum;
 import com.js.enums.StatusCode;
+import com.js.intefaces.ErrorTypeException;
 import lombok.Data;
 
 @Data
@@ -22,7 +22,7 @@ public class BaseResponse<T> {
      **/
     private T data;
 
-    private ExceptionEnum exception;
+    private ErrorTypeException exception;
 
     public BaseResponse() {
 
@@ -34,7 +34,7 @@ public class BaseResponse<T> {
         this.data = data;
     }
 
-    public BaseResponse(String code, String message, T data, ExceptionEnum exception) {
+    public BaseResponse(String code, String message, T data, ErrorTypeException exception) {
         this.code = code;
         this.message = message;
         this.data = data;
@@ -43,10 +43,6 @@ public class BaseResponse<T> {
 
     public static <T> BaseResponse<T> buildSuccess() {
         return build(StatusCode.SUCCESS.getCode(), StatusCode.SUCCESS.getMsg(), null);
-    }
-
-    public static <T> BaseResponse<T> buildSuccess(String message) {
-        return build(StatusCode.SUCCESS.getCode(), message, null);
     }
 
     public static <T> BaseResponse<T> buildSuccess(String message, T data) {
@@ -65,19 +61,19 @@ public class BaseResponse<T> {
         return build(StatusCode.FAIL.getCode(), message, null);
     }
 
-    public static <T> BaseResponse<T> buildFail(ExceptionEnum exceptionEnum) {
+    public static <T> BaseResponse<T> buildFail(ErrorTypeException exceptionEnum) {
         return build(StatusCode.FAIL.getCode(), exceptionEnum.getDescribe(), null, exceptionEnum);
     }
 
-    public static <T> BaseResponse<T> buildFail(ExceptionEnum exceptionEnum, String message) {
+    public static <T> BaseResponse<T> buildFail(ErrorTypeException exceptionEnum, String message) {
         return build(StatusCode.FAIL.getCode(), message, null, exceptionEnum);
     }
 
-    public static <T> BaseResponse<T> build(ExceptionEnum exceptionEnum, T data) {
+    public static <T> BaseResponse<T> build(ErrorTypeException exceptionEnum, T data) {
         return build(StatusCode.FAIL.getCode(), exceptionEnum.getDescribe(), data);
     }
 
-    public static <T> BaseResponse<T> build(String code, String message, T data, ExceptionEnum exceptionEnum) {
+    public static <T> BaseResponse<T> build(String code, String message, T data, ErrorTypeException exceptionEnum) {
         return new BaseResponse<>(code, message, data, exceptionEnum);
     }
 
