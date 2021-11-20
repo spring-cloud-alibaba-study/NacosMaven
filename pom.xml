@@ -25,7 +25,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.6.0</spring-boot.version>
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
-<!--        <spring-cloud-alibaba.version>2.2.5.RELEASE</spring-cloud-alibaba.version>-->
         <user-api.version>1.0-SNAPSHOT</user-api.version>
         <operation-api.version>1.0-SNAPSHOT</operation-api.version>
         <swagger-version>3.0.0</swagger-version>
@@ -69,16 +68,23 @@
             <version>1.2.78</version>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>io.springfox</groupId>-->
+<!--            <artifactId>springfox-boot-starter</artifactId>-->
+<!--            <version>${swagger-version}</version>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>${swagger-version}</version>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-models</artifactId>
+            <version>1.6.3</version>
         </dependency>
 <!--        <dependency>-->
 <!--            <groupId>com.github.xiaoymin</groupId>-->
 <!--            <artifactId>knife4j-spring-boot-starter</artifactId>-->
 <!--            <version>3.0.3</version>-->
 <!--        </dependency>-->
+
+
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
@@ -131,8 +137,6 @@
             <artifactId>okhttp</artifactId>
             <version>4.9.1</version>
         </dependency>
-
-
 
     </dependencies>
 
