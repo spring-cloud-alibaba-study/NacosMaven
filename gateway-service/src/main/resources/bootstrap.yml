@@ -3,7 +3,9 @@ server:
 spring:
   application:
     name: gateway-service
-
-
-
+  main:
+    allow-circular-references: true
+  cloud:
+    compatibility-verifier:
+      enabled: false
 # SpringBoot 2.4 版本 无法识别bootstrap.yml

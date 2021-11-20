@@ -4,7 +4,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: nacos://127.0.0.1:8848
+        server-addr: [nacos://127.0.0.1:8848]
     compatibility-verifier:
       enabled: false
   redis:

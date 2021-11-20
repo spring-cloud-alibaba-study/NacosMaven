@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: user-service
+  main:
+    allow-circular-references: true
 knife4j:
   enable: true
   setting:
