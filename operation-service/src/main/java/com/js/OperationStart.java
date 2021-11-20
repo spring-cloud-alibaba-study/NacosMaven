@@ -21,7 +21,6 @@ public class OperationStart {
         try {
             SpringApplication.run(OperationStart.class, args);
             log.info(StartLogo.print());
-            log.info("项目启动成功");
         } catch (Exception e) {
             log.info("项目启动失败");
         }

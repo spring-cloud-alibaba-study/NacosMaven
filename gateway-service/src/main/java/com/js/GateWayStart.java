@@ -18,7 +18,6 @@ public class GateWayStart {
         try {
             SpringApplication.run(GateWayStart.class, args);
             log.info(print());
-            log.info("项目启动成功");
         } catch (Exception e) {
             log.info("项目启动失败");
         }
@@ -44,7 +43,7 @@ public class GateWayStart {
         sb.append("     \\  \\ `-.   \\_ __\\ /__ _/   .-` /  /\n");
         sb.append("======`-.____`-.___\\_____/___.-`____.-'======\n");
         sb.append("                   `=---='\n");
-        sb.append("...................................................\n");
+        sb.append(".....................项目启动成功...............\n");
         return sb.toString();
     }
 }
