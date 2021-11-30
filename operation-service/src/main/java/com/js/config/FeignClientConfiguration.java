@@ -9,6 +9,6 @@ import org.springframework.context.annotation.Configuration;
  * @Date: 2021/4/20 9:48 PM
  */
 @Configuration
-@EnableFeignClients(basePackages = "com.js")
+@EnableFeignClients(basePackages = "com.js.feignclient")
 public class FeignClientConfiguration {
 }
