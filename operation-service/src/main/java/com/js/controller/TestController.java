@@ -4,6 +4,7 @@ import com.js.distributed.DistributedRedisLock;
 import com.js.dubbo.TestDubboService;
 import com.js.enums.ExceptionEnum;
 import com.js.exception.SystemException;
+import com.js.feignclient.UserTestProxy;
 import com.js.response.BaseResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -31,11 +32,14 @@ public class TestController {
     @Autowired
     private DistributedRedisLock distributedRedisLock;
 
+    @Autowired
+    private UserTestProxy userTestProxy;
+
     @GetMapping("/test")
     @ApiOperation("test方法")
     public BaseResponse<String> getString() {
-        log.info("进入消费者");
         try {
+            log.info("进入消费者{}",userTestProxy.test("TEXT"));
             if (distributedRedisLock.tryLock("TestLog", 0, 2000, TimeUnit.SECONDS)) {
                 log.info("获取分布式锁成功");
                 return BaseResponse.buildSuccess(testDubboService.sayHello("test1"));
