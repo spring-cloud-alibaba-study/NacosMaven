@@ -3,7 +3,7 @@ spring:
     nacos:
       discovery:
 #        namespace: nacos-maven
-        serverAddr: 60.205.230.70:8848
+        serverAddr: 127.0.0.1:8848
     gateway:
       discovery:
         locator:
