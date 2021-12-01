@@ -5,6 +5,8 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+    inetutils:
+      ignored-interfaces: eth.*
   redis:
     host: 127.0.0.1
     port: 6379
@@ -41,8 +43,8 @@ dubbo:
     name: dubbo
   registry:
     address: spring-cloud://127.0.0.1:8848
-  application:
-    name: user-service
+#  application:
+#    name: user-service
   consumer:
     check: false
 feign:
