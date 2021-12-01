@@ -38,8 +38,8 @@ public class TestController {
     @GetMapping("/test")
     @ApiOperation("test方法")
     public BaseResponse<String> getString() {
-        log.info("进入消费者{}",userTestProxy.test("TEXT"));
         try {
+            log.info("进入消费者{}",userTestProxy.test("TEXT"));
             if (distributedRedisLock.tryLock("TestLog", 0, 2000, TimeUnit.SECONDS)) {
                 log.info("获取分布式锁成功");
                 return BaseResponse.buildSuccess(testDubboService.sayHello("test1"));
