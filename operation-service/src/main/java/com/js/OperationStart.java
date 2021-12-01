@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ImportResource;
 /**
  * @Description 启动类
  * @Author jishubu
- * @ComponentScan 测试开发时开启注解可以运行swagger
+ * @ComponentScan
  */
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -21,7 +21,6 @@ public class OperationStart {
         try {
             SpringApplication.run(OperationStart.class, args);
             log.info(StartLogo.print());
-            log.info("项目启动成功");
         } catch (Exception e) {
             log.info("项目启动失败");
         }

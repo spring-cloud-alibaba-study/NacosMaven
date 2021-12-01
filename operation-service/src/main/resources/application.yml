@@ -2,7 +2,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 60.205.230.70:8848
+        server-addr: 127.0.0.1:8848
   redis:
     host: 127.0.0.1
     port: 6379
@@ -39,7 +39,7 @@ dubbo:
     port: 20881
     name: dubbo
   registry:
-    address: nacos://60.205.230.70:8848
+    address: nacos://127。0。0。1:8848
   application:
     name: operation-service
   consumer:

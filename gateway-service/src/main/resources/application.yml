@@ -17,6 +17,14 @@ spring:
             - Path=/operation/**    # 路由映射路径 这里注意，这个路径会追加到 service_id后
           filters:
             - StripPrefix=1  # 转发过滤前缀个数
+        - id: user
+          # 服务端 service_id
+          uri: lb://user-service
+          # 网关断言匹配
+          predicates:
+            - Path=/user/**    # 路由映射路径 这里注意，这个路径会追加到 service_id后
+          filters:
+            - StripPrefix=1  # 转发过滤前缀个数
 management:
   endpoints:
     web:
