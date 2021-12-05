@@ -2,7 +2,7 @@ spring:
   cloud:
     nacos:
       config:
-        server-addr: 60.205.230.70:8848
+        server-addr: 127.0.0.1:8848
         file-extension: yaml
         group: operation # 使用的 Nacos 配置分组，默认为 DEFAULT_GROUP。
-        namespace: b0e9cb88-1147-415e-bb08-6f206cde19e2
+#        namespace: b0e9cb88-1147-415e-bb08-6f206cde19e2
