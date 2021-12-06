@@ -31,7 +31,7 @@
         <swagger-version>3.0.0</swagger-version>
         <hutool.version>5.7.16</hutool.version>
         <common-lang3.version>3.12.0</common-lang3.version>
-        <cloud-spring.version>2.2.2.RELEASE</cloud-spring.version>
+        <cloud-spring.version>2.2.6.RELEASE</cloud-spring.version>
 
     </properties>
 
@@ -46,7 +46,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <version>2.2.6.RELEASE</version>
+            <version>${cloud-spring.version}</version>
         </dependency>
 
         <dependency>
@@ -100,7 +100,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
+            <version>1.18.22</version>
             <scope>provided</scope>
         </dependency>
 
@@ -129,9 +129,6 @@
             <artifactId>okhttp</artifactId>
             <version>4.9.1</version>
         </dependency>
-
-
-
     </dependencies>
 
     <!--版本管理-->
