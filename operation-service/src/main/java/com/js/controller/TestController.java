@@ -5,6 +5,7 @@ import com.js.distributed.DistributedRedisLock;
 import com.js.dubbo.TestDubboService;
 import com.js.enums.ExceptionEnum;
 import com.js.exception.SystemException;
+import com.js.feignclient.UserTestProxy;
 import com.js.response.BaseResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -33,6 +34,9 @@ public class TestController {
     private DistributedRedisLock distributedRedisLock;
 
     @Autowired
+    private UserTestProxy userTestProxy;
+
+    @Autowired
     private TestProperties testProperties;
 
     @GetMapping("/test")
@@ -41,6 +45,7 @@ public class TestController {
         log.info("配置获取的结果为{}",testProperties.getAppId());
         log.info("进入消费者");
         try {
+            log.info("进入消费者{}",userTestProxy.test("TEXT"));
             if (distributedRedisLock.tryLock("TestLog", 0, 2000, TimeUnit.SECONDS)) {
                 log.info("获取分布式锁成功");
                 return BaseResponse.buildSuccess(testDubboService.sayHello("test1"));
