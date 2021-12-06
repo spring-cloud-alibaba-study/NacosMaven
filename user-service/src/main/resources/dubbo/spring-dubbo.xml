@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
     <!-- 提供方应用信息，用于计算依赖关系 -->
-    <dubbo:registry protocol="nacos" address="${dubbo.registry.address}" timeout="50000"/>
+    <dubbo:registry address="${dubbo.registry.address}" timeout="50000"/>
 <!--    <dubbo:monitor protocol="nacos" />-->
     <import resource="classpath:dubbo/spring-dubbo-provider.xml" />
     <import resource="classpath:dubbo/spring-dubbo-consumer.xml" />
