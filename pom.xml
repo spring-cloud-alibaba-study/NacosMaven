@@ -29,7 +29,7 @@
         <swagger-version>3.0.0</swagger-version>
         <hutool.version>5.7.16</hutool.version>
         <common-lang3.version>3.12.0</common-lang3.version>
-        <cloud-spring.version>3.0.2</cloud-spring.version>
+        <cloud-spring.version>2.2.2.RELEASE</cloud-spring.version>
 
     </properties>
 
