@@ -4,6 +4,13 @@ zuul:
     user-service: /user/**
   #统一入口为上面的配置，其他入口忽略
   ignored-patterns: /*-service/**
+  #禁用指定过滤器
+  SendResponseFilter:
+    post:
+      disable: true
+  SendErrorFilter:
+    error:
+      disable: true
 ribbon:
   ReadTimeout: 60000
   ConnectTimeout: 60000
@@ -13,7 +20,7 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 60000
+            timeoutInMilliseconds: 6000
 management:
   endpoints:
     web:
