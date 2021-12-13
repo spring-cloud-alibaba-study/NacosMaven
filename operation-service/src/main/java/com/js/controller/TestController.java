@@ -48,7 +48,7 @@ public class TestController {
             log.info("进入消费者{}",userTestProxy.test("TEXT"));
             if (distributedRedisLock.tryLock("TestLog", 0, 2000, TimeUnit.SECONDS)) {
                 log.info("获取分布式锁成功");
-                return BaseResponse.buildSuccess(testDubboService.sayHello("test1"));
+                return BaseResponse.buildSuccess(userTestProxy.test("TEXT"));
             }
             log.info("获取分布式锁失败");
             return BaseResponse.buildFail(ExceptionEnum.NO_REPEAT_CLICK);

@@ -3,6 +3,14 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        # 配置Sentinel Dashboard地址
+        dashboard: 127.0.0.1:8858
+        # 默认8719端口，假设被占用会自动从8719开始依次加1扫描，直到找到没有被占用的端口
+        port: 8719
+      # 取消懒加载
+      eager: true
   redis:
     host: 127.0.0.1
     port: 6379
