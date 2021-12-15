@@ -24,7 +24,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.6.1</spring-boot.version>
-        <spring-cloud-alibaba.version>2.2.7.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
         <user-api.version>1.0-SNAPSHOT</user-api.version>
         <operation-api.version>1.0-SNAPSHOT</operation-api.version>
         <hutool.version>5.7.11</hutool.version>
@@ -38,7 +38,7 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <version>2.2.7.RELEASE</version>
+            <version>2021.1</version>
         </dependency>
 
         <dependency>
