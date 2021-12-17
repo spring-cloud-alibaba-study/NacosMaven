@@ -38,7 +38,7 @@ dubbo:
 #  scan:
 #    base-packages: ${application.base-package}.dubbo
   protocol:
-    port: 20881
+    port: -1
     name: dubbo
   registry:
     address: spring-cloud://127.0.0.1:8848
