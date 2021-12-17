@@ -39,7 +39,7 @@ dubbo:
   scan:
     base-packages: ${application.base-package}.dubbo
   protocol:
-    port: 20880
+    port: -1
     name: dubbo
   registry:
     address: nacos://127.0.0.1:8848
