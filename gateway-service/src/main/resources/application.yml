@@ -29,7 +29,15 @@ management:
     web:
       exposure:
         include: '*'
-
+mybatis:
+  typeAliasesPackage: ${application.base-package}.pojo, ${application.base-package}.vo, ${application.base-package}.dto
+  mapper-locations: classpath:mapper/*/*.xml,classpath:mapper/*.xml
+  configuration:
+    # 一定要设置，避免个别SQL执行时间过长，把系统搞跨
+    default-statement-timeout: 5
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    cache-enabled: false
 feign:
   okhttp:
     enabled: true
