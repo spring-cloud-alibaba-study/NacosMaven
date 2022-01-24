@@ -4,6 +4,9 @@ spring:
       discovery:
         serverAddr: 127.0.0.1:8848
     gateway:
+      # 官方已经实现redis的
+      redis-route-definition-repository:
+        enabled: true
       discovery:
         locator:
           enabled: true
