@@ -50,12 +50,5 @@ public class RedisConfig {
         return template;
     }
 
-    @Bean(value = "redissonClient")
-    public RedissonClient redissonClient() throws IOException {
-        RedissonClient redisson = Redisson.create(
-                Config.fromYAML(new ClassPathResource("application-redisson.yml").getInputStream()));
-        return redisson;
-    }
-
 
 }
