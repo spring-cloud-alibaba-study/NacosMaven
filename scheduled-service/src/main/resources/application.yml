@@ -4,9 +4,9 @@ spring:
     name: scheduled-service
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/hd_oa?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
-    password: root
+    password: 123456
     username: root
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
     compatibility-verifier:
       enabled: false
