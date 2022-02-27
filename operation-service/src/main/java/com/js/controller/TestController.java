@@ -1,7 +1,6 @@
 package com.js.controller;
 
 import com.js.distributed.DistributedRedisLock;
-import com.js.dubbo.TestDubboService;
 import com.js.enums.ExceptionEnum;
 import com.js.exception.SystemException;
 import com.js.feignclient.UserTestProxy;
@@ -27,9 +26,6 @@ import java.util.concurrent.TimeUnit;
 public class TestController {
 
     @Autowired
-    private TestDubboService testDubboService;
-
-    @Autowired
     private DistributedRedisLock distributedRedisLock;
 
     @Autowired
@@ -39,10 +35,10 @@ public class TestController {
     @ApiOperation("test方法")
     public BaseResponse<String> getString() {
         try {
-            log.info("进入消费者{}",userTestProxy.test("TEXT"));
+            log.info("进入消费者{}", userTestProxy.test("TEXT"));
             if (distributedRedisLock.tryLock("TestLog", 0, 2000, TimeUnit.SECONDS)) {
                 log.info("获取分布式锁成功");
-                return BaseResponse.buildSuccess(testDubboService.sayHello("test1"));
+                return BaseResponse.buildSuccess(userTestProxy.test("TEXT"));
             }
             log.info("获取分布式锁失败");
             return BaseResponse.buildFail(ExceptionEnum.NO_REPEAT_CLICK);

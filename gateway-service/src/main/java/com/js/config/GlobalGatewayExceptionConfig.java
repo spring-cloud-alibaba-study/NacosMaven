@@ -24,8 +24,8 @@ public class GlobalGatewayExceptionConfig {
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
     public ErrorWebExceptionHandler errorWebExceptionHandler(ObjectProvider<List<ViewResolver>> viewResolversProvider,
-                                                             ServerCodecConfigurer serverCodecConfigurer){
-        GlobalGatewayExceptionHandler globalGatewayExceptionHandler =new GlobalGatewayExceptionHandler();
+                                                             ServerCodecConfigurer serverCodecConfigurer) {
+        GlobalGatewayExceptionHandler globalGatewayExceptionHandler = new GlobalGatewayExceptionHandler();
         globalGatewayExceptionHandler.setViewResolvers(viewResolversProvider.getIfAvailable(Collections::emptyList));
         globalGatewayExceptionHandler.setMessageWriters(serverCodecConfigurer.getWriters());
         globalGatewayExceptionHandler.setMessageReaders(serverCodecConfigurer.getReaders());

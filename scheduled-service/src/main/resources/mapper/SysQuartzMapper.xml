@@ -17,7 +17,8 @@
 
     <!-- 基本字段 -->
     <sql id="Base_Column_List">
-        id, class_name, cron_expression, param, descript, quartz_status, create_time, create_user, status, del_flag
+        id
+        , class_name, cron_expression, param, descript, quartz_status, create_time, create_user, status, del_flag
     </sql>
 
     <!-- 通过ID查询单条数据 -->
@@ -186,7 +187,9 @@
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from sys_quartz where id = #{id}
+        delete
+        from sys_quartz
+        where id = #{id}
     </delete>
 
 

@@ -22,6 +22,7 @@ public class GateWayStart {
             log.info("项目启动失败");
         }
     }
+
     public static synchronized String print() {
         StringBuilder sb = new StringBuilder();
         sb.append("\n");

@@ -3,8 +3,8 @@ server:
 spring:
   application:
     name: gateway-service
-#  main:
-#    allow-circular-references: true
+  #  main:
+  #    allow-circular-references: true
   cloud:
     compatibility-verifier:
       enabled: false

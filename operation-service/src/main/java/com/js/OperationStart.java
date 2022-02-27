@@ -14,7 +14,6 @@ import org.springframework.context.annotation.ImportResource;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@ImportResource(value = {"classpath:dubbo/spring-dubbo.xml"})
 @Slf4j
 public class OperationStart {
     public static void main(String[] args) {
