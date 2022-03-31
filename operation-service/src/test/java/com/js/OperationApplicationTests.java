@@ -2,27 +2,16 @@ package com.js;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.redisson.api.BatchResult;
-import org.redisson.api.RBatch;
-import org.redisson.api.RBucket;
-import org.redisson.api.RIdGenerator;
-import org.redisson.api.RKeys;
 import org.redisson.api.RLock;
 import org.redisson.api.RMap;
-import org.redisson.api.RMapCache;
 import org.redisson.api.RScoredSortedSet;
-import org.redisson.api.RTransaction;
-import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
-import org.redisson.api.TransactionOptions;
 import org.redisson.client.codec.StringCodec;
-import org.redisson.config.Config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
