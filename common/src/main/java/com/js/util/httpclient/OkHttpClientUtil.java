@@ -13,6 +13,7 @@ import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -155,7 +156,7 @@ public class OkHttpClientUtil {
      */
     private static Call createPostJsonCall(String url, String json) {
         Request request = new Request.Builder()
-                .post(RequestBody.create(MEDIA_TYPE_JSON, json))
+                .post(RequestBody.create(json,MEDIA_TYPE_JSON))
                 .url(url)
                 .build();
         return client.newCall(request);
@@ -214,6 +215,11 @@ public class OkHttpClientUtil {
             e.printStackTrace();
         }
         return respStr;
+    }
+
+    public static void main(String[] args) {
+        String s = doGet("https://www.baidu.com", new HashMap<>());
+        System.out.println(s);
     }
 
 }
