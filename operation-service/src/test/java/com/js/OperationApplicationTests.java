@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
@@ -23,6 +24,8 @@ class OperationApplicationTests {
 
     @Test
     void contextLoads() {
+        Semaphore semp = new Semaphore(5);
+        semp.tryAcquire();
 
 //        final RScoredSortedSet<String> scoredSortedSet = redissonClient.getScoredSortedSet("test", StringCodec.INSTANCE);
 //        scoredSortedSet.expire(40, TimeUnit.SECONDS);

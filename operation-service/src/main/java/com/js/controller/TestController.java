@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -32,9 +35,24 @@ public class TestController {
     @Resource
     private UserTestProxy userTestProxy;
 
+    @Resource
+    private ExecutorService commonThreadPool;
+
     @GetMapping("/test")
     @ApiOperation("test方法")
     public BaseResponse<String> getString() {
+
+        CompletableFuture<String> stringCompletableFuture = CompletableFuture.supplyAsync(() -> {
+            System.out.println("1000000");
+            return "test";
+        },commonThreadPool).thenComposeAsync(a -> CompletableFuture.supplyAsync(() -> {
+            System.out.println(123);
+            return a + "132";
+        },commonThreadPool)).exceptionally(e ->{
+            throw new SystemException("testException");
+        });
+
+        log.info(stringCompletableFuture.toString());
         try {
             log.info("进入消费者{}", userTestProxy.test("TEXT"));
             if (distributedRedisLock.tryLock("TestLog", 0, 2000, TimeUnit.SECONDS)) {
