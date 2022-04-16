@@ -4,7 +4,6 @@ import com.js.util.StartLogo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.system.SystemProperties;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
@@ -23,6 +22,5 @@ public class OperationStart {
         } catch (Exception e) {
             log.info("项目启动失败");
         }
-        System.out.println(SystemProperties.get("java.version"));
     }
 }

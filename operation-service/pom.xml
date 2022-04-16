@@ -53,12 +53,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-log4j-appender</artifactId>
-            <version>3.1.0</version>
+            <artifactId>kafka_2.13</artifactId>
+            <version>3.0.0</version>
         </dependency>
+
 
     </dependencies>
 

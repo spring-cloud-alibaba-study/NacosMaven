@@ -35,4 +35,9 @@ feign:
     enabled: true
   httpclient:
     enabled: false
+kafka:
+  topics:
+    log: logCenter
+
+
 
