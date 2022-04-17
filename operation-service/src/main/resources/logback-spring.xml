@@ -64,10 +64,6 @@
         </encoder>
     </appender>
 
-    <appender name="KAFKA" class="com.bigdata.kafkalog.KafkaAppender">
-        <bootstrapServers>127.0.0.1:9092</bootstrapServers>
-    </appender>
-
     <!-- project default level -->
     <logger name="net.sh.rgface.serive" level="ERROR"/>
 
@@ -76,6 +72,5 @@
         <appender-ref ref="console"/>
         <appender-ref ref="rollingFile"/>
         <appender-ref ref="fileErrorLog"/>
-        <appender-ref ref="KAFKA"/>
     </root>
 </configuration>
