@@ -25,7 +25,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!--alibaba推荐的版本是2.3.2版本，我这里用的2.3.4-->
         <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
-        <spring-cloud-alibaba.version>2.2.6.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2.2.7.RELEASE</spring-cloud-alibaba.version>
         <user-api.version>1.0-SNAPSHOT</user-api.version>
         <operation-api.version>1.0-SNAPSHOT</operation-api.version>
         <swagger-version>3.0.0</swagger-version>
