@@ -22,7 +22,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot.version>2.6.7</spring-boot.version>
+        <spring-boot.version>2.7.0</spring-boot.version>
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
         <user-api.version>1.0-SNAPSHOT</user-api.version>
         <operation-api.version>1.0-SNAPSHOT</operation-api.version>
