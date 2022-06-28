@@ -21,6 +21,7 @@ import org.redisson.client.codec.StringCodec;
 import org.redisson.config.Config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
 @Slf4j
+@ActiveProfiles("test")
 class OperationApplicationTests {
 
     @Autowired
