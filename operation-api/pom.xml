@@ -12,8 +12,6 @@
     <artifactId>operation-api</artifactId>
     <version>${operation-api.version}</version>
     <name>operation-api</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
 
     <dependencies>
 
