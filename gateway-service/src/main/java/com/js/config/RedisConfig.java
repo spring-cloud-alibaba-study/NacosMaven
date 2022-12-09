@@ -21,7 +21,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @AutoConfigureAfter(RedisAutoConfiguration.class)
 public class RedisConfig {
 
-    @Bean(name = {"redisTemplate","stringRedisTemplate"})
+    @Bean(name = {"redisTemplate"})
     RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
 
         RedisTemplate<String, Object> template = new RedisTemplate<>();
@@ -32,8 +32,6 @@ public class RedisConfig {
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-        serializer.setObjectMapper(mapper);
-
         template.setValueSerializer(serializer);
         //使用StringRedisSerializer来序列化和反序列化redis的key值
         template.setKeySerializer(new StringRedisSerializer());
