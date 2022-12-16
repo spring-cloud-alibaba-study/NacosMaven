@@ -1,5 +1,6 @@
 package com.js.controller;
 
+import com.js.distributed.DistributedRedisLock;
 import com.js.enums.ExceptionEnum;
 import com.js.exception.SystemException;
 import com.js.feignclient.UserTestProxy;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 /**
@@ -28,12 +30,11 @@ import java.util.function.Function;
 @Api(tags = "测试Controller")
 public class TestController {
 
-//    @Resource
-//    private DistributedRedisLock distributedRedisLock;
+    @Resource
+    private DistributedRedisLock distributedRedisLock;
 
-    @Autowired
-    @Qualifier(value = "userTestProxy")
-    private UserTestProxy userTestProxy;
+//    @Autowired
+//    private UserTestProxy userTestProxy;
 
     @Autowired
     private ExecutorService commonThreadPool;
@@ -42,26 +43,26 @@ public class TestController {
     @ApiOperation("test方法")
     public BaseResponse<String> getString() {
 
-        CompletableFuture<String> stringCompletableFuture = CompletableFuture.supplyAsync(() -> {
-                    System.out.println("1000000");
-                    return "test";
-                }, commonThreadPool).thenComposeAsync(a -> CompletableFuture.supplyAsync(() -> {
-                    System.out.println(123);
-                    return a + "132";
-                }, commonThreadPool))
-                .applyToEither(CompletableFuture.supplyAsync(() -> "test2323"), Function.identity())
+//        CompletableFuture<String> stringCompletableFuture = CompletableFuture.supplyAsync(() -> {
+//                    System.out.println("1000000");
+//                    return "test";
+//                }, commonThreadPool).thenComposeAsync(a -> CompletableFuture.supplyAsync(() -> {
+//                    System.out.println(123);
+//                    return a + "132";
+//                }, commonThreadPool))
+//                .applyToEither(CompletableFuture.supplyAsync(() -> "test2323"), Function.identity())
+//
+//                .exceptionally(e -> {
+//                    throw new SystemException("testException");
+//                });
+//        log.info(stringCompletableFuture.toString());
 
-                .exceptionally(e -> {
-                    throw new SystemException("testException");
-                });
-
-        log.info(stringCompletableFuture.toString());
         try {
-            log.info("进入消费者{}", userTestProxy.test("TEXT"));
-//            if (distributedRedisLock.tryLock("TestLog", 0, 2000, TimeUnit.SECONDS)) {
-//                log.info("获取分布式锁成功");
+//            log.info("进入消费者{}", userTestProxy.test("TEXT"));
+            if (distributedRedisLock.tryLock("TestLog", 0, 2000, TimeUnit.SECONDS)) {
+                log.info("获取分布式锁成功");
 //                return BaseResponse.buildSuccess(userTestProxy.test("TEXT"));
-//            }
+            }
             log.info("获取分布式锁失败");
             return BaseResponse.buildFail(ExceptionEnum.NO_REPEAT_CLICK);
         } catch (Exception e) {

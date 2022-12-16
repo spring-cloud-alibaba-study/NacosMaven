@@ -2,6 +2,7 @@ package com.js;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.js.distributed.DistributedRedisLock;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.redisson.api.BatchResult;
@@ -23,7 +24,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +34,7 @@ import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
 @Slf4j
-@ActiveProfiles("test")
+//@ActiveProfiles("test")
 class OperationApplicationTests {
 
     @Autowired
