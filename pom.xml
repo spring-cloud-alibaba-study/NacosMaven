@@ -28,7 +28,7 @@
         <operation-api.version>1.0-SNAPSHOT</operation-api.version>
         <hutool.version>5.8.10</hutool.version>
         <common-lang3.version>3.12.0</common-lang3.version>
-        <cloud-spring.version>3.1.5</cloud-spring.version>
+        <cloud-spring.version>4.0.0</cloud-spring.version>
 
     </properties>
 
@@ -75,7 +75,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>2.0.20</version>
+            <version>2.0.21</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
@@ -123,7 +123,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-dependencies</artifactId>
-            <version>2021.0.5</version>
+            <version>2022.0.0</version>
             <type>pom</type>
             <scope>runtime</scope>
         </dependency>

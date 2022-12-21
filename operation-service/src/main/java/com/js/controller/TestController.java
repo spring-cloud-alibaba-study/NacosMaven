@@ -33,8 +33,8 @@ public class TestController {
     @Resource
     private DistributedRedisLock distributedRedisLock;
 
-//    @Autowired
-//    private UserTestProxy userTestProxy;
+    @Autowired
+    private UserTestProxy userTestProxy;
 
     @Autowired
     private ExecutorService commonThreadPool;
@@ -58,10 +58,10 @@ public class TestController {
 //        log.info(stringCompletableFuture.toString());
 
         try {
-//            log.info("进入消费者{}", userTestProxy.test("TEXT"));
+            log.info("进入消费者{}", userTestProxy.test("TEXT"));
             if (distributedRedisLock.tryLock("TestLog", 0, 2000, TimeUnit.SECONDS)) {
                 log.info("获取分布式锁成功");
-//                return BaseResponse.buildSuccess(userTestProxy.test("TEXT"));
+                return BaseResponse.buildSuccess(userTestProxy.test("TEXT"));
             }
             log.info("获取分布式锁失败");
             return BaseResponse.buildFail(ExceptionEnum.NO_REPEAT_CLICK);
@@ -69,7 +69,7 @@ public class TestController {
             log.error("调用dubbo出现异常", e);
             throw new SystemException(e.getMessage());
         } finally {
-//            distributedRedisLock.unlock("TestLog");
+            distributedRedisLock.unlock("TestLog");
         }
     }
 }
