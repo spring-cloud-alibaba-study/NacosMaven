@@ -4,16 +4,7 @@ import com.js.entity.SysQuartz;
 import com.js.enums.QuartzStatusEnum;
 import com.js.mapper.SysQuartzMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.quartz.CronExpression;
-import org.quartz.CronScheduleBuilder;
-import org.quartz.CronTrigger;
-import org.quartz.Job;
-import org.quartz.JobBuilder;
-import org.quartz.JobDetail;
-import org.quartz.JobKey;
-import org.quartz.Scheduler;
-import org.quartz.TriggerBuilder;
-import org.quartz.TriggerKey;
+import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

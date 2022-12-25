@@ -5,19 +5,14 @@ import com.js.enums.ExceptionEnum;
 import com.js.exception.SystemException;
 import com.js.feignclient.UserTestProxy;
 import com.js.response.BaseResponse;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
 
 /**
  * @program: NacosMaven
@@ -27,7 +22,6 @@ import java.util.function.Function;
  */
 @RestController
 @Slf4j
-@Api(tags = "测试Controller")
 public class TestController {
 
     @Resource
@@ -40,7 +34,6 @@ public class TestController {
     private ExecutorService commonThreadPool;
 
     @GetMapping("/test")
-    @ApiOperation("test方法")
     public BaseResponse<String> getString() {
 
 //        CompletableFuture<String> stringCompletableFuture = CompletableFuture.supplyAsync(() -> {
