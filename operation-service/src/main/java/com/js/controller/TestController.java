@@ -1,9 +1,10 @@
 package com.js.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.js.client.AlbumsClient;
 import com.js.distributed.DistributedRedisLock;
 import com.js.enums.ExceptionEnum;
 import com.js.exception.SystemException;
-import com.js.feignclient.UserTestProxy;
 import com.js.response.BaseResponse;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +29,7 @@ public class TestController {
     private DistributedRedisLock distributedRedisLock;
 
     @Autowired
-    private UserTestProxy userTestProxy;
+    private AlbumsClient albumsClient;
 
     @Autowired
     private ExecutorService commonThreadPool;
@@ -51,10 +52,10 @@ public class TestController {
 //        log.info(stringCompletableFuture.toString());
 
         try {
-            log.info("进入消费者{}", userTestProxy.test("TEXT"));
+//            log.info("进入消费者{}", albumsClient.getById(100L));
             if (distributedRedisLock.tryLock("TestLog", 0, 2000, TimeUnit.SECONDS)) {
                 log.info("获取分布式锁成功");
-                return BaseResponse.buildSuccess(userTestProxy.test("TEXT"));
+                return BaseResponse.buildSuccess(JSON.toJSONString(albumsClient.getAll()));
             }
             log.info("获取分布式锁失败");
             return BaseResponse.buildFail(ExceptionEnum.NO_REPEAT_CLICK);

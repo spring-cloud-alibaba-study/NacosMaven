@@ -1,6 +1,5 @@
 package com.js;
 
-import com.js.config.FeignClientConfiguration;
 import com.js.util.StartLogo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -16,7 +15,6 @@ import org.springframework.context.annotation.Import;
 @SpringBootApplication
 @EnableDiscoveryClient
 @Slf4j
-@Import(FeignClientConfiguration.class)
 public class OperationStart {
     public static void main(String[] args) {
         try {
