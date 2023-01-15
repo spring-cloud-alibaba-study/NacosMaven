@@ -37,20 +37,6 @@ public class TestController {
     @GetMapping("/test")
     public BaseResponse<String> getString() {
 
-//        CompletableFuture<String> stringCompletableFuture = CompletableFuture.supplyAsync(() -> {
-//                    System.out.println("1000000");
-//                    return "test";
-//                }, commonThreadPool).thenComposeAsync(a -> CompletableFuture.supplyAsync(() -> {
-//                    System.out.println(123);
-//                    return a + "132";
-//                }, commonThreadPool))
-//                .applyToEither(CompletableFuture.supplyAsync(() -> "test2323"), Function.identity())
-//
-//                .exceptionally(e -> {
-//                    throw new SystemException("testException");
-//                });
-//        log.info(stringCompletableFuture.toString());
-
         try {
 //            log.info("进入消费者{}", albumsClient.getById(100L));
             if (distributedRedisLock.tryLock("TestLog", 0, 2000, TimeUnit.SECONDS)) {
