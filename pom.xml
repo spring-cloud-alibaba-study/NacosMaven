@@ -26,7 +26,7 @@
         <spring-cloud-alibaba.version>2022.0.0.0-RC1</spring-cloud-alibaba.version>
         <user-api.version>1.0-SNAPSHOT</user-api.version>
         <operation-api.version>1.0-SNAPSHOT</operation-api.version>
-        <hutool.version>5.8.10</hutool.version>
+        <hutool.version>5.8.11</hutool.version>
         <common-lang3.version>3.12.0</common-lang3.version>
         <cloud-spring.version>4.0.0</cloud-spring.version>
 
