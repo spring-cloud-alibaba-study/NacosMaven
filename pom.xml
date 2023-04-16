@@ -117,12 +117,6 @@
     <!--版本管理-->
     <dependencyManagement>
         <dependencies>
-            <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
-            <dependency>
-                <groupId>commons-fileupload</groupId>
-                <artifactId>commons-fileupload</artifactId>
-                <version>${commons.fileupload.version}</version>
-            </dependency>
 
             <dependency>
                 <groupId>org.redisson</groupId>
