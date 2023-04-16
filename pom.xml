@@ -28,7 +28,7 @@
         <operation-api.version>1.0-SNAPSHOT</operation-api.version>
         <hutool.version>5.8.11</hutool.version>
         <common-lang3.version>3.12.0</common-lang3.version>
-        <cloud-spring.version>4.0.0</cloud-spring.version>
+        <cloud-spring.version>4.0.2</cloud-spring.version>
 
         <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
