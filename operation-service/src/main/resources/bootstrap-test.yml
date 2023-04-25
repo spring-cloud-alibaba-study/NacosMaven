@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        group: operation # 使用的 Nacos 配置分组，默认为 DEFAULT_GROUP。

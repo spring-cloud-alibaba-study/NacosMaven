@@ -1,5 +1,6 @@
 package com.js.controller;
 
+import com.js.config.TestProperties;
 import com.js.distributed.DistributedRedisLock;
 import com.js.enums.ExceptionEnum;
 import com.js.exception.SystemException;
@@ -32,6 +33,8 @@ public class TestController {
 
     @Autowired
     private ExecutorService commonThreadPool;
+    @Autowired
+    private TestProperties testProperties;
 
     @GetMapping("/test")
     public BaseResponse<String> getString() {
@@ -50,6 +53,8 @@ public class TestController {
 //                });
 //        log.info(stringCompletableFuture.toString());
 
+        log.info("配置获取的结果为{}",testProperties.getAppId());
+        log.info("进入消费者");
         try {
             log.info("进入消费者{}", userTestProxy.test("TEXT"));
             if (distributedRedisLock.tryLock("TestLog", 0, 2000, TimeUnit.SECONDS)) {
