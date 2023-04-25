@@ -6,7 +6,7 @@ spring:
       config:
         group: operation
         name: ${spring.application.name}
-        namespace: 1927fb40-32a4-4201-b2be-58ce127ec64d
+        namespace: operation
 
     compatibility-verifier:
       enabled: false

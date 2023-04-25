@@ -1,5 +1,6 @@
 package com.js.controller;
 
+import com.alibaba.fastjson2.JSON;
 import com.js.config.TestProperties;
 import com.js.distributed.DistributedRedisLock;
 import com.js.enums.ExceptionEnum;
@@ -54,12 +55,11 @@ public class TestController {
 //        log.info(stringCompletableFuture.toString());
 
         log.info("配置获取的结果为{}",testProperties.getAppId());
-        log.info("进入消费者");
         try {
-            log.info("进入消费者{}", userTestProxy.test("TEXT"));
             if (distributedRedisLock.tryLock("TestLog", 0, 2000, TimeUnit.SECONDS)) {
                 log.info("获取分布式锁成功");
-                return BaseResponse.buildSuccess(userTestProxy.test("TEXT"));
+                return BaseResponse.buildSuccess(JSON.toJSONString(testProperties));
+//                return BaseResponse.buildSuccess(userTestProxy.test("TEXT"));
             }
             log.info("获取分布式锁失败");
             return BaseResponse.buildFail(ExceptionEnum.NO_REPEAT_CLICK);
