@@ -17,18 +17,25 @@
         <module>user-api</module>
         <module>scheduled-service</module>
     </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.4</version>
+    </parent>
 
     <!--    统一版本管理-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot.version>2.7.4</spring-boot.version>
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
         <user-api.version>1.0-SNAPSHOT</user-api.version>
         <operation-api.version>1.0-SNAPSHOT</operation-api.version>
-        <hutool.version>5.8.8</hutool.version>
+        <hutool.version>5.8.11</hutool.version>
         <common-lang3.version>3.12.0</common-lang3.version>
         <cloud-spring.version>3.1.4</cloud-spring.version>
+        <commons.fileupload.version>1.5</commons.fileupload.version>
+        <snakeyaml.version>2.0</snakeyaml.version>
+        <commons.compress.version>1.23.0</commons.compress.version>
 
     </properties>
 
@@ -98,7 +105,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <version>${spring-boot.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.junit.vintage</groupId>
@@ -145,13 +151,6 @@
     <!--版本管理-->
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
 
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
