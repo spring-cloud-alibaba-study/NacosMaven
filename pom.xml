@@ -22,18 +22,30 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot.version>3.0.0</spring-boot.version>
-        <spring-cloud-alibaba.version>2022.0.0.0-RC1</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2022.0.0.0-RC2</spring-cloud-alibaba.version>
         <user-api.version>1.0-SNAPSHOT</user-api.version>
         <operation-api.version>1.0-SNAPSHOT</operation-api.version>
-        <hutool.version>5.8.10</hutool.version>
+        <hutool.version>5.8.11</hutool.version>
         <common-lang3.version>3.12.0</common-lang3.version>
-        <cloud-spring.version>4.0.0</cloud-spring.version>
+        <cloud-spring.version>4.0.2</cloud-spring.version>
 
         <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <redisson.version>3.20.1</redisson.version>
+        <snakeyaml.version>2.0</snakeyaml.version>
+        <fastjson.version>2.0.27</fastjson.version>
+        <commons.fileupload.version>1.5</commons.fileupload.version>
+        <snakeyaml.version>2.0</snakeyaml.version>
+        <commons.compress.version>1.23.0</commons.compress.version>
+
+
     </properties>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.0.6</version>
+    </parent>
 
     <dependencies>
 
@@ -48,7 +60,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>2.0.21</version>
+            <version>${fastjson.version}</version>
         </dependency>
 
         <dependency>
@@ -57,10 +69,14 @@
             <version>${hutool.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${snakeyaml.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <version>${spring-boot.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.junit.vintage</groupId>
@@ -107,6 +123,12 @@
     <!--版本管理-->
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-loadbalancer</artifactId>
@@ -129,13 +151,6 @@
                 <artifactId>nacos-client</artifactId>
                 <version>2.2.0</version>
             </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
 
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
@@ -151,6 +166,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-compress</artifactId>
+                <version>${commons.compress.version}</version>
+            </dependency>
+
+
 
         </dependencies>
     </dependencyManagement>
