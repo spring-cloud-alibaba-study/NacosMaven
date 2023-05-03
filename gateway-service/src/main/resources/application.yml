@@ -33,6 +33,11 @@ spring:
           filters:
             - StripPrefix=1  # 转发过滤前缀个数
       enabled: true
+    openfeign:
+      okhttp:
+        enabled: true
+      httpclient:
+        enabled: false
 management:
   endpoints:
     web:
@@ -41,11 +46,6 @@ management:
   endpoint:
     gateway:
       enabled: true
-feign:
-  okhttp:
-    enabled: true
-  httpclient:
-    enabled: false
 
 logging:
   config: classpath:logback-spring.xml
