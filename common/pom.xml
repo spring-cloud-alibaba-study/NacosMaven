@@ -15,7 +15,8 @@
 
     <properties>
         <easyexcel.version>3.2.1</easyexcel.version>
-        <common-csv.version>1.10.0</common-csv.version>
+        <common.csv.version>1.10.0</common.csv.version>
+        <hibernate.validator.version>8.0.0.Final</hibernate.validator.version>
     </properties>
     <dependencies>
 
@@ -33,13 +34,13 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-csv</artifactId>
-            <version>${common-csv.version}</version>
+            <version>${common.csv.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>8.0.0.Final</version>
+            <version>${hibernate.validator.version}</version>
         </dependency>
 
 
