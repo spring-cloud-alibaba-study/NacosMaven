@@ -5,6 +5,11 @@ spring:
         server-addr: 127.0.0.1:8848
     compatibility-verifier:
       enabled: false
+    openfeign:
+      okhttp:
+        enabled: true
+      httpclient:
+        enabled: false
   redis:
     redisson:
       file: classpath:application-redisson.yml
@@ -29,15 +34,4 @@ info:
   description: 黑大OA签到平台
   version: v1.0
   author: 技术部
-
-feign:
-  okhttp:
-    enabled: true
-  httpclient:
-    enabled: false
-kafka:
-  topics:
-    log: logCenter
-
-
 
