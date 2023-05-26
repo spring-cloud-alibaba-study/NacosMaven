@@ -2,6 +2,7 @@ package com.js;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.js.distributed.DistributedRedisLock;
+import com.js.util.httpclient.OkHttpClientUtil;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -30,6 +31,13 @@ class OperationApplicationTests {
     private ExecutorService commonThreadPool;
     @Resource
     private DistributedRedisLock distributedRedisLock;
+    @Test
+    public void testOkHttp(){
+        while (true) {
+            String s = OkHttpClientUtil.doGet("https://chatlink.mstatik.com/widget/standalone.html?eid=8ebc53cd743175b3f7f7d6459bf4c0ba", null);
+            log.info(s);
+        }
+    }
 
     @Test
     void testRAtomicLong(){
