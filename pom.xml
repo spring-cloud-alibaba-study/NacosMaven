@@ -26,7 +26,7 @@
         <user-api.version>1.0-SNAPSHOT</user-api.version>
         <operation-api.version>1.0-SNAPSHOT</operation-api.version>
         <project.common.version>1.0-SNAPSHOT</project.common.version>
-        <hutool.version>5.8.11</hutool.version>
+        <hutool.version>5.8.20</hutool.version>
         <common-lang3.version>3.12.0</common-lang3.version>
         <cloud-spring.version>4.0.2</cloud-spring.version>
         <java.version>17</java.version>
@@ -41,6 +41,7 @@
         <spring.cloud.dependencies.version>2022.0.2</spring.cloud.dependencies.version>
         <okhttp.version>4.10.0</okhttp.version>
         <guava.version>31.1-jre</guava.version>
+        <feign.okhttp.version>12.3</feign.okhttp.version>
     </properties>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -89,6 +90,7 @@
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-okhttp</artifactId>
+            <version>${feign.okhttp.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
